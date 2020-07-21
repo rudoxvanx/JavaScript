@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Soluciones 8</title>
+</head>
+<body>
+    <script>
+        /*24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.*/
+        const ordenarArreglo=(numeros=undefined)=>{
+
+            if((numeros === undefined)) return console.warn(`No ingresaste un arreglo`);
+            if(!(numeros instanceof Array)) return console.error(`El parametro enviado ${numeros} no es un arreglo`);
+            if((numeros.length === 0)) return console.error(`El arreglo esta vacio`);
+            
+            for(let num of numeros){
+                if(typeof num !== "number") return console.error(`El valor ${num} ingresado, NO es un número`);
+            }
+
+            return console.info({
+                numeros,
+                asc:numeros.map(ele=>ele).sort(),
+                desc:numeros.map(ele=>ele).sort().reverse()
+
+            });
+
+        }
+        /*
+        ordenarArreglo();
+        ordenarArreglo("Hola");
+        ordenarArreglo([]);
+        ordenarArreglo(3,[]);
+        ordenarArreglo([3,4,5,6,2,1]);
+        */
+
+        /*25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]*/
+        const quitarDuplicados=(numeros=undefined)=>{
+            if((numeros === undefined)) return console.warn(`No ingresaste un arreglo`);
+            if(!(numeros instanceof Array)) return console.error(`El parametro enviado ${numeros} no es un arreglo`);
+            if((numeros.length === 0)) return console.error(`El arreglo esta vacio`);
+            if((numeros.length === 1)) return console.error(`El arreglo debe tener almenos dos elementos`);
+            
+            return console.info({
+                original:numeros,
+                sinDuplicados:[...new Set(numeros)]
+                //sinDuplicados:numeros.filter((value,index,self)=>self.indexOf(value)===index)
+            });
+        }
+
+        /*
+        quitarDuplicados();
+        quitarDuplicados({});
+        quitarDuplicados([]);
+        quitarDuplicados([1]);
+        quitarDuplicados([1,2,3,4,8,9,9,true,true,false])
+        */
+
+            
+        /*26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.*/
+        const promedio=(numeros=undefined)=>{
+            if((numeros === undefined)) return console.warn(`No ingresaste un arreglo`);
+            if(!(numeros instanceof Array)) return console.error(`El parametro enviado ${numeros} no es un arreglo`);
+            if((numeros.length === 0)) return console.error(`El arreglo esta vacio`);
+            
+            for(let num of numeros){
+                if(typeof num !== "number") return console.error(`El valor ${num} ingresado, NO es un número`);
+            }
+
+            return console.info(
+                numeros.reduce((total,num,index,numeros)=>{
+                    total+=num;
+                    if(index===numeros.length-1){
+                        return `El promedio de ${numeros.join("+")} es ${total/numeros.length}`;
+                    }else{
+                        return total;
+                    }
+                })
+            )
+        }
+
+        promedio();
+        promedio({});
+        promedio([]);
+        promedio([2,true]);
+        promedio([1,2,3,4,5,6,7,8,9]);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proxies</title>
+</head>
+<body>
+    <script>
+        /*PROXIES
+        Mecanismo de JavaScript que nos permite crear un objeto apartir
+        de un objeto literal.
+        Recibe como parametro el objeto literal */
+
+        const persona={
+            nombre:"",
+            apellido:"",
+            edad:0
+        }
+
+        const manejador={
+            set(obj,prop,valor){
+              
+                if((Object.keys(obj).indexOf(prop)===-1)){
+                    return console.error(`La propiedad ${prop} no existe en el objeto persona`)
+                }
+
+                if((prop==="nombre" || prop=== "apellido") && !(/^[A-Za-zÑñÁáéÉíÍóÓúÚ]+$/g.test(valor))){
+                 
+                   return console.error(`La propiedad ${prop} solo accepta letras y espacios en blanco`)
+                }
+
+                obj[prop]=valor;
+            }
+        }
+
+        const jon=new Proxy(persona,manejador);
+        jon.nombre="Jon";
+        jon.apellido="Mircha";
+        jon.edad=35;
+        jon.twitter="@jonmiracha";
+        console.log(jon);
+        console.log(persona);
+    </script>
+</body>
+</html>

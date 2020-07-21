@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clases</title>
+</head>
+<body>
+    <script>
+        /*
+            Javascript permite el uso de clases basado en prototipos
+            nos permite escribir clases pero estas seran interpretadas
+            o compiladas a prototipos.
+        */
+
+        //Clase interpretada como un prototipo
+        class Animal{
+            constructor(nombre,genero){
+                this.nombre=nombre;
+                this.genero=genero;
+            }
+            
+            sonar(){
+            console.log('Hago sonidos por que estoy vivo');
+            }
+
+            saludar(){
+            console.log(`Hola me llamo ${this.nombre}`);
+            }
+             
+        }
+
+        class Perro extends Animal{
+            constructor(nombre,genero,tamanio){
+                //Manda a llamar el contructor de la clase super
+                super(nombre,genero);
+                this.tamanio=tamanio;                
+            }
+
+            sonar(){
+                console.log("Soy un perro y mi sonido es un ladrido");
+            }
+
+            ladrar(){
+                console.log("Guaw guaw");
+            }
+
+        }
+
+        const mimi=new Animal("Mimi","Hembra"),
+        scooby=new Perro("Scooby","Macho","Gigante");
+        
+        console.log(mimi);
+        mimi.saludar;
+        mimi.sonar;
+
+        console.log(scooby);
+        scooby.saludar();
+        scooby.sonar();
+        scooby.ladrar();
+
+
+    </script>
+</body>
+</html>

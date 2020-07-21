@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asincronia</title>
+</head>
+<body>
+    <script>
+        /*SINCRONIA 
+          JS: Es un lenguaje de un solo hilo o proceso quiere decir que solo puede ejecutar una sola 
+          cosa a la vez. No te preocupas por el recolector de basura.
+          
+          Preocupaciones:Extender tareas de red sin bloquear el hilo principal
+          Concurrente apesar de contar con un solo hilo.
+
+          -PROCESAMIENTO SINGLE THREAD Y MULTITHREAD
+          Thread Unidades basicas de proceso de una tarea, existen 
+          lenguajes que operan en un hilo y otros en multihilos.
+          
+          Runtime es el navegador para JS en el navegador y para nodejs
+          es el servidor.
+
+          -OPERACIONES DEL CPU: Son aquellas que se la pasan consumiendo
+          los procesos de la CPU.Ejem un loop ejecutado de manera indefinida 
+          ya que afecta el rendimiento del CPU.
+
+          -OPERACIONES DE I/O: Son aquellas que esperan de manera indefinida la
+          petición del recurso solicitado, ejemp un formulario con información.
+
+          JS se comporta con operaciones de I/O
+
+          -CONCURRENCIA
+          Dos o mas tareas progresan de manera simultanea se ejecutan al mismo tiempo.
+
+          -PARALELISMO
+          Dos o mas tareas se ejecutan al mismo tiempo
+          Se puede tener concurrencia en entorno sincrono o asincrono
+          
+          Single thread esta más relacionado a concurrencia y no bloqueante y asincrono.
+          
+          -OPERACIONES BLOQUEANTES Y NO BLOQUEANTES
+          
+          Operacion bloqueante: No devuelve el control a la aplicación hasta que termine de realizarse 
+          no devuelve el control al hilo principal hasta que esta termine de relizarse.
+          
+          Operacion no bloqueante: Devuelve el control al hilo principal sin importar si se termino
+          o no su ejecución por completo.Una vez que se termine mandara notificación al hilo principal 
+          y mandara los datos solicitados o resultado.
+
+          -OPERACIONES ASINCRONAS Y SINCRONAS
+          Operaciones sincronas: Espera el resultado una vez que lo recibe continua ejecutando.
+          Operaciones asincronas: Se ejecuta y desconoce cuando vendra la respuesta. Suelta 
+          inmediatamente el control y lo devuelve al hilo principal.
+          
+          TIPOS DE CODIGO EN JAVASCRIPT
+          Sincrono bloqueante
+          Asincrono bloqueante
+
+
+          Fase de espera cada que se ejecuta una operación
+           
+
+
+          EVENT LOOP
+          CALL STACK
+          Herramienta loupe
+
+          Javascript usa un modelo asincrono y no bloqueante,
+          con un loop de eventos implementado en un sólo hilo,
+          (single thread) para operaciones de entrada y salida
+          (input/output)
+
+          */
+          
+         //Código Sincrono bloqueante
+        (function(){
+            console.log("Codigo Sincrono");
+            console.log("Inicio");
+
+            function dos(){
+                console.log("Dos");
+            }
+
+            function uno(){
+                console.log("Uno");
+                dos();
+                console.log("Tres");
+            }
+
+            uno();
+            console.log("Fin")
+        })();
+
+        console.log("********************************");
+         //Código Asincrono NO bloqueante
+        (function(){
+            console.log("Código Asincrono");
+            console.log("Inicio");
+
+            function dos(){
+                setTimeout(function(){
+                    console.log("Dos")
+                },1000);
+            }
+
+            function uno(){
+                setTimeout(function(){
+                    console.log("Uno");
+                },0);
+                dos();
+                console.log("Tres");
+            }
+
+            uno();
+            console.log("Fin")
+
+            
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios2</title>
+</head>
+<body>
+    <script>
+/**/
+
+/*5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".*/
+    
+    const invertirPalabra=(palabra="")=>
+    {
+        let invertida=" ";
+        if(palabra){
+            for(let i=palabra.length-1;i>=0;i--)
+            {
+                invertida+=palabra[i];
+            }
+        }
+        else{
+            console.error("No ingresaste una cadena");
+        }
+        return console.info(invertida);
+    }
+
+    invertirPalabra("Rodolfo Fabian Garcia Rodríguez");
+/*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
+    const contarRepeticiones=(cadena="",palabra=" ")=>
+    {
+        const palabraDividida=cadena.split(" ");
+        let contador=0;
+
+        for(let i=0;i<palabraDividida.length;i++){
+            if(palabraDividida[i]===palabra) contador+=1;
+        }
+
+        return console.info(`La palabra ${palabra} se encuentra ${contador} veces `);
+    }
+
+    contarRepeticiones("Hola mundo adios mundo","mundo");
+
+/*7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.*/
+    const palindromo=(palabra="")=>
+    {
+        let invertida="",aux,aux2;
+        for(let i=palabra.length-1;i>=0;i--)
+        {
+            invertida+=palabra[i];
+        }
+
+        aux=invertida.toLowerCase();
+        aux2=palabra.toLocaleLowerCase();
+        (aux===aux2)? console.info(`La palabra cumple`):console.info(`La palabra no cumple`);
+
+
+    }
+
+    palindromo("Salinas");
+
+    /*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.*/
+    const eliminarPatron=(cadena,patron)=>{
+
+        let expReg1=new RegExp(patron,"ig");
+        let resultado=" ";
+
+        if(expReg1.test(cadena)){
+            resultado=cadena.split(patron);
+            console.log(resultado);
+        }
+    }
+
+    eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+    </script>
+</body>
+</html>

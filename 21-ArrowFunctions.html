@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Se pueden emitir las llaves despues de la flecha solo si tenemos una linea
+        de codigo dentro de la funcion*/
+        
+        /*const saludar= () =>{ console.log(`Hola`)} ;*/
+
+        //FORMA DE DEFINIR LA ARROW FUNCTION N#1
+        const saludar1= (nombre) => console.log(`Hola ${nombre}`) ;
+
+        //FORMA DE DEFINIR LA ARROW FUNCTION N#2
+        /*Eliminar el parentesis del parametro solo si es un parametro*/
+        const saludar2= nombre => console.log(`Hola ${nombre}`) ;
+
+        saludar2(`Rudolf`);
+
+        //Funcion expresada
+        const sumar1=function(a,b){
+            return a + b;
+        }
+
+        const sumar2=(a,b) => a + b;
+        console.log(sumar2(1,1));
+
+        
+        const funcionDeVariasLineas=()=>{
+            console.log("Hola 1");
+            console.log("Hola 2");
+            console.log("Hola 3");
+        }
+
+        funcionDeVariasLineas();
+
+        const numeros=[1,2,3,4,5];
+        numeros.forEach((ele,index)=>console.log(`${ele} esta en la posicion ${index}`));
+        
+        /*numeros.forEach(function(ele,index){
+            console.log(`El elemento ${ele} esta en la posicion ${index}`);
+        });*/
+
+        function Perro(){
+            /*Imprimira el contexto del navegador window*/
+            console.log(this);
+        }
+
+        Perro();
+
+        const perro1={
+            
+            nombre:"Kenai",
+            ladrar:()=>{
+                /*Imprime el contexto del objeto window*/
+                console.log(this);
+            }
+
+            /*
+            ladrar(){
+                   Imprime el contexto del objeto actual
+                   console.log(this);
+            }*/
+            
+            /*
+            ladrar:function(){
+                   Imprime el contexto del objeto actual
+                   console.log(this);
+            }*/
+        }
+
+        perro1.ladrar();
+        
+        const perro2={
+
+            nombre:"Kenai",
+            ladrar(){
+            console.log(this);
+            }
+        }
+        perro2.ladrar();
+    </script>
+</body>
+</html>

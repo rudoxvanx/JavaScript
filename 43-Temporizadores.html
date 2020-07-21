@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Temporizadores</title>
+</head>
+<body>
+    <script>
+    /*TEMPORIZADORES Permiten lanzar ciertas acciones despues de cierto tiempo*/
+        /*
+        setTimeout(()=>{
+            console.log("Ejecutamos un setTimeout esto se ejecuta una sóla vez")
+        },3000);*/
+
+        //setInterval(()=>{console.log("Esto se ejecuta indefinidamente cada cierto tiempo")},1000)
+        
+        let temporizador=
+        setInterval(()=>{console.log(new Date().toLocaleTimeString())},1000)
+        
+        clearInterval(temporizador);
+        console.log("Despues del clear")
+    </script>
+</body>
+</html>

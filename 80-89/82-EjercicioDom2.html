@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio1 DOM</title>
+    <link rel="stylesheet" href="../CSS/estilos_sitios.css">
+</head>
+<body>
+
+    <header>
+        <div id="msn_connection" style="text-align: center;"></div>
+        <h1>Ejercicios DOM</h1>
+    </header>
+    
+
+    <button id = "btn_muestra">Menu</button>
+    <button id = "btn_inicio">Regresar</button>
+    <button id = "btn_modo">Modo</button>
+
+    <aside class="menu_oculto">    
+        <nav class="navigation_menu">
+            <ul class="opciones_menu">
+                <div class="contenedor_opciones">
+                    <li><a href="#s1">Seccion 1</a></li>
+                    <li><a href="#s2">Seccion 2</a></li>
+                    <li><a href="#s3">Seccion 3</a></li>
+                    <li><a href="#s4">Seccion 4</a></li>
+                    <li><a href="#s5">Seccion 5</a></li>
+                </div>
+            </ul>
+        </nav>
+    </aside>
+
+    <section id="s1" class="seccion_light">
+        <h2>Seccion 1</h2>
+        <div class="contenedor_btns">
+
+            <div class="inner_btns">
+                <div id="conte_reloj"></div>
+                <button id="btn_inicia_reloj">Iniciar Reloj</button>
+                <button id="btn_detener_reloj">Detener Reloj</button>
+                <button id="btn_inicia_alarma">Iniciar Alarma</button>
+                <button id="btn_detener_alarma">Detener Alarma</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="s2" class="seccion_light">
+        <h2>Eventos del teclado</h2>
+        <div id="area-desplazamiento">
+            <div id="cubito"></div>
+        </div>
+    </section>
+    <section id="s3" class="seccion_light">
+        <h2>Cuenta regresiva</h2>
+        <div id ="cuenta"></div>
+    </section>
+    <section id="s4" class="seccion_light">
+        <h2>Seccion 4</h2>
+
+    </section>
+    <section id="s5" class="seccion_light">
+        <h2>Web Design with JS</h2>
+        <div id ="content_load" style="text-align: center;">
+            <iframe width="420" height="315"src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+            <iframe width="420" height="315"src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>
+    </section>
+    <section id="s6" class="seccion_light">
+        <h2>Seccion 6</h2>
+        <div id="form1_">
+            <form action="#" >
+                <div>
+                    <div>
+                        <label for="width">Ancho</label><br>
+                        <input type="number" id="width">
+                    </div>
+                    <div>
+                        <label for="height">Alto</label><br>
+                        <input type="number" id="height">
+                    </div>
+                    <div>
+                        <label for="link">Enlace a página</label><br>
+                        <input type="text" id="link">
+                    </div>
+                </div>
+                <button  id="btn_crear_ventana" type="button">Enviar</button>
+            </form>
+        </div>
+    </section>
+    <section id="s7" class="seccion_light">
+        <h2>Seccion 7</h2>
+        <div id="user_agent_place" style="text-align: center;"></div>
+    </section>
+     
+    <script src="../js/scripts/indexDom.js" type="module"></script>
+    <script>
+        const $btn=document.getElementById("btn_muestra"),
+        $menu=document.querySelector(".menu_oculto");
+        
+        $btn.addEventListener("click",(e)=>{
+            
+            if($menu.classList.contains("menu_oculto")){
+                $menu.classList.remove("menu_oculto");
+                $menu.classList.add("muestra_menu");
+            }else{
+                $menu.classList.add("menu_oculto");
+                $menu.classList.remove("muestra_menu");
+            }
+         
+         
+        });
+
+        
+        /*Evento que pone en marcha el reloj*/
+        const $btn_activa_reloj = document.querySelector("#btn_inicia_reloj"),
+        $conte_reloj = document.querySelector("#conte_reloj");
+       
+        
+        let idInterval;
+
+        const miAlarma = ()=>{
+
+            idInterval=setInterval(() => {
+                if($conte_reloj.firstChild) $conte_reloj.firstChild.remove();
+                $btn_activa_reloj.disabled=true;
+                let $hora = new Date().toLocaleTimeString();
+                $conte_reloj.insertAdjacentText("afterbegin",$hora);
+
+
+            }, 1000);
+        }
+
+        $btn_activa_reloj.addEventListener("click",e => {
+           miAlarma();
+        });
+
+        /*EVENTO QUE DETIENE EL EVENTO RELOJ*/        
+        const $btn_desactiva_reloj = document.getElementById("btn_detener_reloj");
+
+        $btn_desactiva_reloj.addEventListener("click",e=>{
+
+            $conte_reloj.firstChild.remove();
+            clearInterval(idInterval);
+            $btn_activa_reloj.disabled=false;
+    
+        });
+
+        /*EVENTO QUE INICIA LA ALARMA*/
+        const $btn_inicia_alarma = document.getElementById("btn_inicia_alarma");
+        let idInterval2; 
+
+        $btn_inicia_alarma.addEventListener("click",e =>{
+            //setInterval(alarma(999,210,800),1000);
+            idInterval2=setInterval(() => {
+                let alarma=new AudioContext(),
+                v = alarma.createOscillator(),
+                u = alarma.createGain();
+
+                v.connect(u);
+                v.frequency.value = 210;
+                v.type="square";
+                u.connect(alarma.destination);
+                u.gain.value = 999 * 0.01;
+                v.start(alarma.currentTime);
+                v.stop(alarma.currentTime + 800 * 0.001);
+                
+            },1000);
+
+            
+        });
+
+        const $btn_detener_alarma = document.getElementById("btn_detener_alarma");
+        
+        $btn_detener_alarma.addEventListener("click", e => {
+            clearInterval(idInterval2);
+        })
+        
+
+        const $cubito = document.querySelector("#cubito"),$d = document;
+        let leftc = getComputedStyle($cubito).getPropertyValue("left");
+        let topc = getComputedStyle($cubito).getPropertyValue("top");
+        
+        function mover(id,x_pos,y_pos){
+            console.log(x_pos,y_pos);
+            const element = document.getElementById(id);
+            element.style.left = x_pos + 'px';
+            element.style.top = y_pos + 'px';
+        }
+               
+        /*let ancho = document.querySelector("#area-desplazamiento").clientWidth,
+        alto = document.querySelector("#area-desplazamiento").clientHeight;*/
+        
+        $d.addEventListener("keydown",e => {
+
+            switch(e.key){
+                case 'ArrowDown':
+                     e.preventDefault();
+                      mover('cubito',parseInt(getComputedStyle($cubito).getPropertyValue("left")),parseInt(getComputedStyle($cubito).getPropertyValue("top")) + 10);
+                break;
+
+                case 'ArrowUp':
+                      e.preventDefault();
+                      if((parseInt(getComputedStyle($cubito).getPropertyValue("top")) - 10) >= -1 )
+                      mover('cubito',parseInt(getComputedStyle($cubito).getPropertyValue("left")),parseInt(getComputedStyle($cubito).getPropertyValue("top")) - 10);
+                break;
+
+                case 'ArrowRight':
+                      e.preventDefault();
+                      if((parseInt(getComputedStyle($cubito).getPropertyValue("left")) - 10) <= 734 )
+                      mover('cubito',parseInt(getComputedStyle($cubito).getPropertyValue("left")) + 10,parseInt(getComputedStyle($cubito).getPropertyValue("top")));
+                break;
+                
+                case 'ArrowLeft':
+                      e.preventDefault();
+                      if((parseInt(getComputedStyle($cubito).getPropertyValue("left")) - 10) >= -5 )
+                      mover('cubito',parseInt(getComputedStyle($cubito).getPropertyValue("left")) - 10,parseInt(getComputedStyle($cubito).getPropertyValue("top")));
+                break;
+            }     
+        });
+
+        console.log("*****OBJETO DATE*********");
+        /*CUENTA REGRESIVA*/
+        function countDown(id,fecha){
+
+            fechaLimite = fecha.getTime()
+
+            let x = setInterval(() => {
+                let now = new Date().getTime(),
+                dif = fechaLimite - now, 
+                days = Math.floor(dif / (1000 * 60 * 60 * 24)),
+                horas = Math.floor(dif % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)),
+                minutes = Math.floor(dif % (1000 * 60 * 60) / (1000 * 60)),
+                seconds =  Math.floor(dif % (1000 * 60) / 1000);
+
+                document.getElementById(id).innerText = days + " d " + horas +" hras " + + minutes + " m " + seconds + " s ";
+                
+                if (dif < 0) {
+                    clearInterval(x);
+                    document.getElementById(id).innerHTML = "EXPIRED";
+                }
+                
+            }, 1000);
+            
+        }
+
+        countDown("cuenta",new Date("July 15, 2020 12:00:00"));
+
+        console.log("*****RETO SCROLL BUTTON*********");
+        const d = document,$btn_reg = d.querySelector("#btn_inicio");
+
+        window.addEventListener("scroll", e => {
+                
+                if(window.scrollY >= 207)
+                {
+                    $btn_reg.style.visibility = "visible";
+                }
+                else{
+                    
+                    $btn_reg.style.visibility = "hidden";
+                }   
+
+        });
+
+        $btn_reg.addEventListener("click", e =>{
+            window.scroll({top:0,left:0,behavior:'smooth'});
+
+        });
+
+        
+
+        
+
+        d.addEventListener("DOMContentLoaded",e => {
+            const $secciones = d.querySelectorAll("section");
+            let recentTheme = localStorage.getItem('recentTheme');
+            
+            if(recentTheme){
+                 for (const $seccion of $secciones) {
+
+                    if(recentTheme === "seccion_light")
+                    {   
+                        $seccion.classList.add(localStorage.getItem('recentTheme'));
+                        $seccion.classList.remove("seccion_dark");
+                        
+                    }else{
+                        $seccion.classList.add(localStorage.getItem('recentTheme'));
+                        $seccion.classList.remove("seccion_light");
+                    }
+                      
+                }
+            }
+           
+
+        });
+
+        d.addEventListener("click", e => {
+
+            const $secciones = d.querySelectorAll("section");
+            if(e.target.matches('#btn_modo'))
+            { 
+              
+                for (const $seccion of $secciones) {
+
+                    if($seccion.classList.contains("seccion_light"))
+                    {   
+                        localStorage.setItem("recentTheme","seccion_dark");
+                        $seccion.classList.remove("seccion_light");
+                        $seccion.classList.add(localStorage.getItem('recentTheme'));
+
+                        
+                    }else{
+
+                        localStorage.setItem("recentTheme","seccion_light");
+                        $seccion.classList.remove("seccion_dark");
+                        $seccion.classList.add(localStorage.getItem('recentTheme'));
+
+                    }
+                      
+                }
+                                    
+            }
+        });
+
+        window.addEventListener("resize",e => {
+            const $list_iframe = document.querySelectorAll("iframe"),
+            $content_loaded = document.getElementById("content_load"),
+            $list_a = $content_loaded.querySelectorAll("a");
+
+            let anchor1 = document.createElement("a"),
+            anchor2  = document.createElement("a");
+
+            anchor1.innerText = "VER VIDEO";
+            anchor2.innerText = "VER MAPA";
+            anchor1.setAttribute("href","https://www.youtube.com/watch?v=tuUEpbGVV2Y");
+            anchor2.setAttribute("href","https://www.youtube.com/watch?v=tuUEpbGVV2Y");
+
+            let iframe1 = document.createElement("iframe"),
+            iframe2 = document.createElement("iframe");
+
+            iframe1.setAttribute("src","https://www.youtube.com/embed/tgbNymZ7vqY");
+            iframe2.setAttribute("src","https://www.youtube.com/embed/tgbNymZ7vqY");
+
+            if(window.matchMedia("(max-width: 492px)").matches){
+
+                if($list_a.length === 0)
+                {   
+                    $list_iframe.forEach((elemento,index) => {
+                        elemento.remove();     
+                    });
+                    $content_loaded.appendChild(anchor1);
+                    $content_loaded.appendChild(anchor2);
+                }
+
+            }
+            else{
+                const $list_iframe2 = document.querySelectorAll("iframe"),
+                $list_a2 = document.querySelectorAll("a");
+    
+
+                if($list_iframe2.length === 0){
+                
+                    $list_a2.forEach((elemento,index) => {
+                        elemento.remove();
+                    });
+
+                   $content_loaded.appendChild(iframe1);
+                   $content_loaded.appendChild(iframe2);
+                }
+
+
+            }
+
+
+        })
+
+        
+      </script>
+</body>
+</html>

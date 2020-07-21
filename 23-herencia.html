@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Herencia</title>
+</head>
+<body>
+    <script>
+        //Funcion constructora del prototipo animal
+        function Animal(nombre,genero){
+                this.nombre=nombre;
+                this.genero=genero;
+        }
+
+        //Métodos agregados al prototipo de la función constructura
+        Animal.prototype.sonar=function(){
+                console.log('Hago sonidos por que estoy vivo');
+        }
+
+        Animal.prototype.saludar=function(){
+            console.log(`Hola me llamo ${this.nombre}`);
+        }
+
+        //Herencia Prototipica
+        function Perro(nombre,genero,tamanio){
+            //Método que nos permite llegar a la clase constructor
+            //de la clase que hereda
+            this.super=Animal;
+            this.super(nombre,genero);
+            this.tamanio=tamanio;
+        }
+
+        //Perro esta herendando de animal
+        Perro.prototype=new Animal();
+        Perro.prototype.constructor=Perro;
+
+        //Sobreecritura de métodos del prototipo padre en el hijo
+        Perro.prototype.sonar=function(){
+            console.log("Soy un perro mi sonido es un ladrido");
+        }
+
+        Perro.prototype.ladrar=function(){
+            console.log("Guauuu guauuu");
+        }
+
+        const persona1=new Animal("Rudolf","Macho");
+        const persona2=new Perro("Antonio","Hembra","Mediano");
+
+        console.log(persona1);
+        console.log(persona2);
+        
+        persona1.sonar();
+        persona1.saludar();
+
+        persona2.sonar();
+        persona2.saludar();
+        persona2.ladrar();
+    </script>
+</body>
+</html>

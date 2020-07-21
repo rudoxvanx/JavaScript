@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iterables y iteradores</title>
+</head>
+<body>
+    <script>
+        /*Iterables este termino se usa para referirnos a estructuras
+        lieales, que puede ser recorridos ejemp: arreglos,cadenas,objetos
+        entre otros.
+        */
+
+        /*Iterador especie de apuntador que esta recorriendo los elementos*/
+        const iterable=[1,2,3,4,5];
+        /*Accedemos al iterador de nuestro iterable*/
+        const iterador=iterable[Symbol.iterator]();
+
+        console.log(iterable);
+        console.log(iterador);
+        console.log(iterador.next());
+        console.log(iterador.next());
+
+        let next=iterador.next();
+
+        /*
+        while(!next.done){
+            console.log(next.value);
+            next=iterador.next();
+        }*/
+        
+        const iterble2=new Set([1,2,3,4,5,3,3,5,6,6]);
+        let iterador2=iterble2[Symbol.iterator]();
+        let next2=iterador2.next();
+
+        while(!next2.done){
+            console.log(next2.value);
+            next2=iterador2.next();
+        }
+        
+
+    </script>
+</body>
+</html>

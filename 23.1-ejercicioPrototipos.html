@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Persona(nombre,edad,genero){
+            this.nombre=nombre;
+            this.edad=edad;
+            this.genero=genero;
+        }
+
+        Persona.prototype.obtDetalles=function(){
+            console.log(`Esta es mi nombre ${this.nombre} 
+            esta es mi edad ${this.edad} 
+            esta este es mi genero ${this.genero}`);
+        }
+
+        function Estudiante(nombre,edad,genero,curso,gpo){
+            this.super=Persona;
+            this.super(nombre,edad,genero);
+            this.curso=curso;
+            this.gpo=gpo;
+        }
+
+        //Crear un nuevo objeto que utiliza un objeto antiguo como su prototipo
+        Estudiante.prototype=new Persona();
+        Estudiante.prototype.constructor=Persona;
+
+        Estudiante.prototype.registrar=function(){
+            console.log("Este es el método registrar");
+        }
+    
+
+        function Profesor(nombre,edad,genero,asignatura,nivel){
+            this.super=Persona;
+            this.super(nombre,edad,genero);
+            this.asignatura=asignatura;
+            this.nivel=nivel;
+
+        }
+        
+        //Crear un nuevo objeto que utiliza un objeto antiguo como su prototipo
+        Profesor.prototype=new Persona();
+        Profesor.prototype.constructor=Persona;  
+
+        Profesor.prototype.asignar=function(){
+            console.log("Este es el método asignar");
+        }
+        
+      
+
+        const alumno=new Estudiante('Roberto','27','M','Ingles','12');
+        console.log(alumno);
+        const maestro=new Profesor('Claudia','33','F','Bases','Intermedio');
+        console.log(maestro);
+
+        alumno.registrar();
+        maestro.asignar();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tipo de dato Map</title>
+</head>
+<body>
+    <script>
+        /*Objetos que nos sirven para almacenar conjuntos de valores
+        asociados a manera de objeto*/
+        //Coleccion de datos estilo método primitivo
+        //OBJETO PRIMITIVO
+
+        const mapa=new Map();
+        mapa.set("nombre","Rudolf");
+        mapa.set("apellido","Garcia");
+        mapa.set("edad",27);
+
+        console.log(mapa);
+        console.log(mapa.size);
+        console.log(mapa.has("correo"));
+        console.log(mapa.has("nombre"));
+        console.log(mapa.get("nombre"));
+        mapa.set("nombre","Rudolf Garcia");
+        console.log(mapa.get("nombre"));
+        mapa.delete("apellido");
+        console.log(mapa);
+
+        mapa.set(19,"19");
+        mapa.set(false,"false");
+        mapa.set({},{});
+        console.log(mapa);
+
+        for (let [key,value] of mapa) {
+            console.log(`Llave: ${key}, Valor ${value}`);       
+        }
+
+        //SE PUEDE GENERAR LLAVES QUE NO SEAN CADENA DE TEXTO
+        //EN UN OBJETO PRIMITIVO
+
+        const mapa2=new Map([
+            ["nombre","Kenay"],
+            ["edad",2],
+            ["animal","perro"],
+            [null,"nulo"],
+        ]);
+
+        console.log(mapa2);
+
+        const llavesMapa2=[...mapa2.keys()];
+        const valoresMapa2=[...mapa2.values()];
+
+        console.log(llavesMapa2);
+        console.log(valoresMapa2);
+
+    </script>
+</body>
+</html>

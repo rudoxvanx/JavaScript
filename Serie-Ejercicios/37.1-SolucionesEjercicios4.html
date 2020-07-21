@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Soluciones ejercicios 4</title>
+</head>
+<body>
+    <script>
+        /*12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.*/
+        const numeroPrimo=(numero=undefined)=>{
+            if(numero===undefined) return console.warn("No ingresaste un número");
+            if(typeof numero!== "number")return console.error(`El valor ${numero} ingresado no es número`);
+            if(numero === 0)return console.error(`El número no puede ser 0`);
+            if(numero === 1)return console.error(`El número no puede ser 1`);
+
+            if(Math.sign(numero)=== -1)return console.error(`El número no puede ser negativo`);
+            
+            let divisible=false;
+
+            for(let i=2;i<numero;i++)
+            {   if(numero%i===0){
+                   divisible=true;
+                   break;
+                }
+
+            }
+
+            return (divisible)
+            ?console.log(`El número ${numero}, NO es primo`)
+            :console.log(`El número ${numero}, SÍ es primo`)
+        }
+
+        numeroPrimo(2);
+
+        /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/ 
+        const numeroParImpar=(numero=undefined)=>{
+            if(numero===undefined) return console.warn("No ingresaste un número"); 
+            if(typeof numero!== "number")return console.error(`El valor ${numero} ingresado no es número`);
+
+            return (numero%2===0)
+                   ?console.log(`El ${numero} es par`)
+                   :console.log(`El ${numero} es impar`)
+        }
+
+        numeroParImpar(3);
+        numeroParImpar(2);
+        numeroParImpar();
+        numeroParImpar(-3);
+        numeroParImpar();
+
+        const convertirGrados=(grados=undefined,unidad=undefined)=>{
+
+            if(grados===undefined) return console.warn("No ingresaste un número de grados" );
+            
+            if(typeof grados!== "number")return console.error(`El valor ${grados} ingresado no es número`);
+            
+            if(unidad===undefined) return console.warn("No ingresaste el tipo de grados a convertir" );
+            
+            if(typeof unidad !== "string")return console.error(`El valor ${unidad} ingresado no es una cadena de texto`);
+            
+            if(unidad.length!==1 || !/C|F/.test(unidad)) return console.warn("Valor de unidad no reconocidad");
+
+            if(unidad==="C")return console.info(`${grados}C=${Math.round(grados*(9/5))+32}F`)
+            
+            else if(unidad==="F")return console.info(`${grados}F=${Math.round((grados-32)*(5/9))}C`)
+       
+        }
+
+        convertirGrados();
+        convertirGrados("2");
+        convertirGrados(2);
+        convertirGrados(2,true);
+        convertirGrados(2,"Hola");
+        convertirGrados(2,"E");
+        convertirGrados(32,"F");
+        convertirGrados(100,"F");
+
+    </script>
+</body>
+</html>

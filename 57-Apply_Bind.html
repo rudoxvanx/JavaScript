@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apply y Bind</title>
+</head>
+<body>
+    <script>
+        this.lugar="Contexto Global";
+
+
+        function saludar(saludo,aQuien){
+            console.log(`${saludo} ${aQuien} desde el ${this.lugar}`)
+        }
+
+        saludar("Hola","Rudolf");
+        const obj={
+            lugar:"Contexto Objeto"
+        }
+
+        saludar.call(obj,"Hola","Jon");
+        saludar.call(null,"Hola","Jon");
+        saludar.call(this,"Hola","Jon");
+        saludar.apply(obj,["Adios","Mircha"]);
+        saludar.apply(null,["Adios","Mircha"]);
+        saludar.apply(this,["Adios","Mircha"]);
+
+        this.nombre="Window"
+        
+        const persona={
+            nombre:"Rudolf",
+            saludar:function(){
+                console.log(`Hola ${this.nombre}`);
+            }
+        }
+
+        persona.saludar();
+
+        const otraPersona={
+            //saludar:persona.saludar.bind(persona)
+            saludar:persona.saludar.bind(this)
+        }
+
+        //Carece de la propiedad nombre
+        otraPersona.saludar();
+
+        
+    </script>
+</body>
+</html>

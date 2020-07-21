@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Operadores corto circuito</title>
+</head>
+<body>
+    <script>
+        function saludar(nombre){
+            nombre=nombre || 'Desconocido';
+            console.log(`Hola ${nombre}`);
+        }
+        
+
+        saludar('Rudolf');
+        saludar();
+
+        /*EL*/
+        console.log("CORTO CIRCUITO OR");
+        console.log("cadena"||"valor de la derecha");
+        console.log(false||"valor de la derecha");
+        console.log(0||"valor de la derecha");
+        console.log([]||"valor de la derecha");
+
+        console.log("CORTO CIRCUITO AND");
+        console.log("cadena"&&"valor de la derecha");
+        console.log(false&&"valor de la derecha");
+        console.log(0&&"valor de la derecha");
+        console.log([]&&"valor de la derecha");
+    </script>
+</body>
+</html>

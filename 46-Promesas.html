@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promesas</title>
+</head>
+<body>
+    <script>
+        /*Las promesas trabajan con dos aspectos principales el RESULT y REJECT
+          si la promesa se cumple se tendra como resultado el result en caso contrario
+          se obtendra en reject
+        */
+
+        function cuadradoPromise(value){
+            if((typeof value !== 'number')){ 
+                return Promise.reject(`Error, el valor ${value} ingresado no es un número`);
+            }
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve({
+                        value:value,
+                        result:value*value
+                    });
+                 
+                }, 0|Math.random()*1000);
+            });
+        }
+
+        cuadradoPromise(0)
+        .then(obj=>{
+            console.log("Inicio promise");
+            console.log(`Promise ${obj.value},${obj.result}`);
+            return cuadradoPromise(1)
+
+        })
+        .then(obj=>{
+            console.log(`Promise ${obj.value},${obj.result}`);
+            return cuadradoPromise(2)
+        })
+        .then(obj=>{
+            console.log(`Promise ${obj.value},${obj.result}`);
+            return cuadradoPromise(3)
+        })
+        .then(obj=>{
+            console.log(`Promise ${obj.value},${obj.result}`);
+            return cuadradoPromise(4)
+        
+        }).then(obj=>{
+            console.log(`Promise ${obj.value},${obj.result}`);
+            console.log(`Fin de la promesa`)
+        })
+        .catch(err=>console.error(err));
+    </script>
+</body>
+</html>

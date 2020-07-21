@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weakset Weakmap</title>
+</head>
+<body>
+    <script>
+        /*Weakset Weakmap
+          Referencias debiles 
+          Almacenan llaves debiles de tipo objeto*/
+
+        /*
+        const ws=new WeakSet();
+        let valor1={"valor 1":1};
+        let valor2={"valor 2":2};
+        let valor3={"valor 3":3};
+
+        ws.add(valor1);
+        ws.add(valor2);
+        
+
+        console.log(ws);
+        console.log(ws.has(valor1));
+        console.log(ws.has(valor3));
+
+        //ws.delete(valor2);
+        console.log(ws);
+
+        setInterval(() => {
+            console.log(ws)
+        }, 1000);
+
+        setTimeout(()=>{
+            valor1=null;
+            valor2=null;
+            valor3=null;
+        },5000);
+        */
+
+        /*WeakMap al igual que el weakset no es un elemento iterable*/
+        const wm=new WeakMap();
+        let llave1={};
+        let llave2={};
+        let llave3={};
+
+        wm.set(llave1,1);
+        wm.set(llave2,2);
+        console.log(wm);
+        console.log(wm.get(llave1));
+        console.log(wm.get(llave2));
+        console.log(wm.get(llave3));
+
+        wm.delete(llave2);
+        console.log(wm);
+
+        wm.set(llave2,2);
+        wm.set(llave3,3);
+        console.log(wm);
+
+        setInterval(() => {
+            console.log(wm);
+        }, 1000);
+
+        setTimeout(()=>{
+             llave1=null;
+             llave2=null;
+             llave3=null;
+        },5000);
+
+        /*WEAKMAP funciona como un objeto
+          WEAKSET funciona como un arreglo*/
+
+        //Se pueden usar como variables de estado
+    </script>
+</body>
+</html>

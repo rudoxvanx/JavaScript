@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nuevos tipss de datos JS</title>
+</head>
+<body>
+    <script>
+        /*Los simbolos nos permiten ocultar cierto tipo de propiedades*/
+        let id=Symbol("id");
+        let id2=Symbol("id2");
+
+        /*Referencia única*/
+        console.log(id===id2);
+        console.log(id,id2);
+        console.log(typeof id,typeof id2);
+
+        /*CREACION DE PROPIEDADES*/
+        const NOMBRE=Symbol("nombre");
+        const SALUDAR=Symbol("saludar");
+        
+        const persona={
+            [NOMBRE]:"Rudolf",
+            edad:27
+        }
+
+        console.log(persona);
+        persona.NOMBRE="Rudolf Garcia";
+        console.log(persona.NOMBRE);
+        console.log(persona[NOMBRE]);
+        persona[SALUDAR]=function(){
+            console.log("Hola");
+        }
+
+        console.log(persona);
+        /*Llamando al Symbol saludar*/
+        persona[SALUDAR]();
+
+        /*Imprimir las propiedades del objecto*/
+        for (const propiedad in persona) {
+            console.log(propiedad);
+            console.log(persona[propiedad])
+        }
+
+        /*Imprimir los symbolos*/
+        console.log(Object.getOwnPropertySymbols(persona));
+        
+    
+    </script>
+</body>
+</html>

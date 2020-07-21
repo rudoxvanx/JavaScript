@@ -1,0 +1,15 @@
+{
+    "cadena":"Rudolf",
+    "numero":"27",
+    "booleano":"true",
+    "arreglo":["Comer","Dormir"],
+
+    "objeto":{
+        "facebook":"@rudolf",
+        "email":"rudolf@gmail.com"
+    },
+    "nulo":null
+
+
+}
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios 9</title>
+</head>
+<body>
+    <script>
+    /*
+    27) Programa una clase llamada Pelicula.
+
+    La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+    - Todos los datos del objeto son obligatorios.
+    - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+    7 restantes números.
+    - Valida que el título no rebase los 100 caracteres.
+    - Valida que el director no rebase los 50 caracteres.
+    - Valida que el año de estreno sea un número entero de 4 dígitos.
+    - Valida que el país o paises sea introducidos en forma de arreglo.
+    - Valida que los géneros sean introducidos en forma de arreglo.
+    - Valida que los géneros introducidos esten dentro de los géneros 
+    aceptados*.
+    - Crea un método estático que devuelva los géneros aceptados*.
+    - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+    - Crea un método que devuelva toda la ficha técnica de la película.
+    - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+    * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+    */
+
+
+    function Pelicula(datosPelicula=undefined){
+
+        const arreProp=["id_pelicula","titulo","director","anio","paises","generos","calificacion"],
+        generos=["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+        let expReg=/^[a-zA-Z]{2}[0-9]{7}$/;
+        let titulo=/^[a-zA-Z0-9]{1,100}$/,
+        director=/^[a-zA-Z]{1,50}\s[a-zA-Z]{1,50}$/,
+        anio=/^[0-9]{4}$/;
+        
+
+        if(datosPelicula === undefined) return console.info(`El objeto pelicula no cuenta con propiedades`);
+        if(!(datosPelicula instanceof Object)) return console.warn(`Debes de ingresar un objeto como parametro`);
+        
+        arreProp.forEach(dato => {
+            if(!(datosPelicula.hasOwnProperty(dato))) return console.warn(`No se ingresaron todas los datos requeridas`)
+        });
+
+        if(expReg.test(datosPelicula.id_pelicula)) console.info(`La propiedad ${datosPelicula.id_pelicula} SI cumple`);
+        else return console.warn(`La propiedad ${datosPelicula.id_pelicula} NO cumple`);
+        
+        if(titulo.test(datosPelicula.titulo)) console.info(`La propiedad ${datosPelicula.titulo} SI cumple `);
+        else return console.warn(`La propiedad ${datosPelicula.titulo} NO cumple`);
+
+        if(anio.test(datosPelicula.anio)) console.info(`La propiedad ${datosPelicula.anio} SI cumple`);
+        else return console.warn(`La propiedad ${datosPelicula.anio} NO cumple`);
+
+        if(!(datosPelicula.generos instanceof Array)) return console.warn(`Los géneros no se ingresaron en forma de arreglo`);
+        if(datosPelicula.generos.lenght === 0) return console.info("Debes de ingresar por lo menos un genero")
+
+        /*
+        datosPelicula.generos.forEach(genero => {
+            if((generos.find(genero =>))) return console.log("cumple")//console.warn(`El género o generos ingresados no esta dentro de los permitidos`)
+        });
+        */
+       if(datosPelicula.calificacion>=1 && datosPelicula.calificacion<=10) console.info(`La calificación SI cumple ${datosPelicula.calificacion}`);
+       else return console.warn(`La calificación NO cumple ${datosPelicula.calificacion}`);
+
+       
+
+
+
+
+    }
+
+    Pelicula.prototype.muestraGeneros=function(){
+        console.info(`Estos son los generos acceptados ${this.generos}`);
+    }
+
+    Pelicula.prototype.muestraFicha=function(){
+        for (const dato in datosPelicula) {
+              console.info(dato);
+        }
+    }
+
+   
+    
+
+    Pelicula({id_pelicula:"aB1234567",titulo:"Sherek",director:"James Cameron",anio:"2002",paises:["EUA"],generos:["Action","Adult"],calificacion:8.9});
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Propiedad Set <i class="fas fa-empty-set    "></i></title>
+</head>
+<body>
+    <script>
+        /*Arreglo mejorado de javascript que solo accepta valores únicos*/
+
+        const set=new Set([1,2,3,4,true,false,true,{},{},"Hola",'Hola']);
+        console.log(set);
+
+        const set2=new Set();
+        set2.add(1);
+        set2.add(2);
+        set2.add(2);
+        set2.add(3);
+        set2.add(true);
+        set2.add(false);
+        set2.add(true);
+        set2.add(true);
+        console.log(set2);
+        console.log(set2.size);
+
+
+        console.log("RECORRIDO SET1");
+        set.forEach((item)=>{
+            console.log(item);
+        })
+
+        console.log("RECORRIDO SET2");
+        for (const item of set2) {
+            console.log(item);
+        }
+
+        let arr=Array.from(set);
+         console.log(arr);
+         
+         //Eliminar un elemento
+         set.delete("Hola");
+         console.log(set);
+
+         //Validar si un elemento existe o no en la coleccion
+         console.log(set.has(19));
+
+
+         //Limpiar set2
+         set2.clear();
+         console.log(set2);
+
+         //USOS PARA UN LISTADO DE ELEMENTOS UNICOS EJEMPLO
+         //BASE DE DATOS CON CORREOS ELECTRONICOS IRREPETIBLES
+
+
+    </script>
+</body>
+</html>

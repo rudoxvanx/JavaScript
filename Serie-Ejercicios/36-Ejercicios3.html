@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        /*9) Programa una función que obtenga un numero aleatorio entre 501 y 600.*/
+        const obtenerAleatorio=()=>{
+            let aleatorio=0,nuevo;
+            let bandera=false;
+
+            do{
+                aleatorio=Math.random() * (601-501) + 501;
+                nuevo=Math.floor(aleatorio);
+                console.info(`El resultado obtenido es ${nuevo}`);
+            }while(nuevo!==600)
+        }
+        //obtenerAleatorio();
+
+        /*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.*/
+        const numeroCapicua=(numero)=>{
+          let invertido="";
+          if(!numero) console.warn("No ingresaste un número válido");
+          else{
+                for(let i=numero.toString(10).length-1;i>=0;i--)
+                {
+                    invertido+=numero.toString(10)[i];
+                }
+
+                if(numero===parseInt(invertido,10)) console.info(`El número ${numero} si es capicua`);
+                else console.info(`El número ${numero} no es capicua`);
+          }
+
+         
+        }
+
+        //numeroCapicua(1010);  
+
+        /*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
+        const calculaFactorial=(numero)=>{
+            let inicio=1;
+            
+            if(numero){
+                for(let i=numero;numero>=1;i--){
+                    inicio*=numero;
+                    numero--;
+                }
+            }
+
+            console.info(`Este es el factorial ${inicio} del número ${numero}`);
+        }
+        
+        calculaFactorial(5);
+    </script>
+</body>
+</html>

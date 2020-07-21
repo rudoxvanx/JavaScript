@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios 6</title>
+</head>
+<body>
+    <script>
+        
+        /*18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
+        const vocalesConsonantes=(cadena="")=>{
+            let expresionRegular=/[aeiou]/ig;
+            let expresionRegular2=/![aeiou]/ig;
+            let contadorVocales=0,contadorConsonante=0;
+            let cadenaLimpia=cadena.replace(/ /g,"");
+            console.log(cadenaLimpia);
+            console.log(cadena);
+
+            if(expresionRegular.test(cadenaLimpia)){
+                for(i=0;i<cadenaLimpia.length;i++)
+                {
+                    switch (cadenaLimpia[i].toLocaleLowerCase()) {
+                        case "a":
+                            contadorVocales+=1;
+                        break;
+                        case "e":
+                            contadorVocales+=1;
+                        break;
+                        case "i":
+                            contadorVocales+=1;
+                        break;
+                        case "o":
+                            contadorVocales+=1;
+                        break;
+                        case "u":
+                            contadorVocales+=1;
+                        break;
+
+                        default:
+                            contadorConsonante+=1;
+                        break;
+                    
+                       
+                    }
+
+                }
+            }
+
+            console.log(contadorVocales);
+            console.log(contadorConsonante);
+
+        }
+
+        vocalesConsonantes("Rodo");
+
+        /*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.*/
+        const nombreValido=(nombre)=>{
+            let expresion=/^[a-zA-Z]{1,}\s*[a-zA-Z]{1,}/gm
+
+            if(expresion.test(nombre))console.info(`El nombre ${nombre} es válido`);
+            else  console.log(`El nombre ${nombre} no es válido`);
+        }
+
+        nombreValido("Jonathan 48388949839dlñklklkdfkldf")
+
+        /*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.*/
+        const correoValido=(correo)=>{
+            let expresion=/^[a-zA-Z]{1,}@.+\..+/gm;
+        
+
+          
+            if(expresion.test(correo))console.info(`Èl correo ${correo} es válido`);
+            else console.log(`El ${correo} no es válido`);
+        }
+
+        correoValido("@gmail.com")
+    </script>
+</body>
+</html>

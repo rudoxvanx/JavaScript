@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palabra Reservada This</title>
+</head>
+<body>
+    <script>
+        /*Objeto global window*/
+        console.log(this);
+        console.log(window);
+        console.log(this===window);
+
+        this.nombre="Contexto Global";
+        console.log(this.nombre);
+
+        function imprimir(){
+            console.log(this.nombre);
+        }
+
+        imprimir();
+
+        const obj={
+            nombre:"Contexto Objeto",
+            imprimir:function(){
+                console.log(this.nombre);
+            }
+        }
+
+        obj.imprimir();
+
+        const obj2={
+            nombre:"Contexto Objeto2",
+            //Tomara el nombre de la funcion imprimir
+            imprimir
+            //imprimir:imprimir
+        }
+
+        //Imprimira el nombre del objeto2 porque asi se define el 
+        //scope 
+        obj2.imprimir();
+
+        
+        const obj3={
+            nombre:"Contexto Objeto3",
+            /*arrow function no maneja su propio scope*/
+            imprimir:()=>{
+                console.log(this.nombre);
+            }
+        }
+
+        /*Mantiene un enlace del contexto en el que el objeto ha sido 
+        creado, por lo tanto tomara el padre*/
+        obj3.imprimir();
+
+        function Persona(nombre){
+            const that=this;
+            that.nombre=nombre;
+
+            //this.nombre=nombre
+            //return console.log(this.nombre);
+
+            /*Esta funcion no cuenta con ninguna propiedad nombre por
+            lo que leera el valor nombre del contexto global
+            return function(){
+                console.log(this.nombre);
+            }*/
+
+            /*
+            return (()=>{
+                console.log(this.nombre);
+            });*/
+
+            return function(){
+                console.log(that.nombre);
+            }
+
+
+        }
+
+        let jon=new Persona("Rudolf");
+        jon();
+
+    </script>
+</body>
+</html>

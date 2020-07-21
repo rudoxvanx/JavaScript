@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios 5</title>
+</head>
+<body>
+    <script>
+    /*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+    const conversionNumerica=(numero=undefined,base=undefined)=>{
+        let numeroConvertido="",resultado="";
+        let invertido_bin="",resultado2=0;
+
+
+        if(base===2)
+        {
+           while(numero!==0){
+                 numeroConvertido+=numero%2;
+                 numero=Math.floor(numero/2);
+           }
+           for(let i=numeroConvertido.length-1;i>=0;i--)
+           {
+                resultado+=numeroConvertido[i];
+           }
+           console.log(resultado);
+        }
+
+        if(base===10)
+        {   
+            for(let j=numero.toString().length-1;j>=0;j--)
+                {
+                    invertido_bin+=numero.toString()[j];
+                }
+           
+          
+            for(let k=0;k<invertido_bin.length;k++)
+                {    if(invertido_bin[k]==="1") 
+                        resultado2+=Math.pow(2,k);
+                }
+            console.log(resultado2);
+        }
+
+      
+    }
+
+    //conversionNumerica(15,2);
+
+    /*16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.*/
+
+    const descuento=(cantidad,descuento)=>{
+        let descuento2=cantidad*(descuento/100);
+        let cantidad_descuento=cantidad-descuento2;
+
+        console.log(cantidad_descuento);
+    }
+
+    //descuento(6000,13);
+
+    /*17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).*/
+    
+    const calcularAnios=(fecha=undefined)=>{
+        
+    
+        let diferenciaMil=new Date().getTime()-fecha.getTime();
+
+        
+        let milSegAnio=1000 * 60 * 60 * 24 * 365,
+        aniosHumanos=Math.floor(diferenciaMil/milSegAnio);
+
+
+        return (Math.sign(aniosHumanos)===-1)
+        ? console.info(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}`)
+        : (Math.sign(aniosHumanos)===1)
+            ?console.info(`Han pasado ${aniosHumanos} años, desde ${fecha.getFullYear()}`)
+            :console.info(`Estamos en el año actual ${fecha.getFullYear()}`);
+    }
+    
+    
+    calcularAnios(new Date(1984,4,23));
+    /*
+    console.log("Diferencia:"+diferenciaMil);
+    console.log("1984:"+ fecha.getTime());
+    console.log("2020:"+ fechaReciente.getTime());
+    */
+
+    /*126150 hrs*/
+    /*14.4006849 Años*/
+    /*console.log("1984:"+fecha.getTime());*/
+
+    /*441665.6886630555 hrs*/
+    /*50.418457609937838981*/
+    /*console.log("2020:"+fechaReciente.getTime());*/
+
+  
+  
+
+    
+
+    </script>
+</body>
+</html>

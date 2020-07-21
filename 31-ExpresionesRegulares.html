@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expresiones regulares</title>
+</head>
+<body>
+    <script>
+        /*
+            Una expresión regular es una secuencia de caracteres que forman un patrón
+            de búsqueda de cadenas de texto.
+        */
+
+        let cadena="Lorem ipsum3 dolor lorem sit 9amet consectetur, adipisicing elit. Rem nulla inventore expedita id hic blanditiis perspiciatis ipsum soluta odit, harum mollitia ab, cupiditate tempora alias beatae. Cupiditate architecto nemo non!"
+        /*Objeto RegExp se le pasa como parametro la expresión a validar y una bandera
+        esta bandera puede ser la letra g para buscar el patrón en toda la cadena, o
+        la letra i para ignorar entre mayusculas y minusculas.
+        */
+        let expReg1=new RegExp("lorem","ig");
+        let expReg2=/lorem/ig; /*Expresión regular con la palabra lorem*/
+        let expReg3=/[0-9]/ig; /*Expresión regular con un rango de numeros de entre 0 y 0*/
+        let expReg4=/lorem{1,2}/ig;/*Expresión regular con palabra lorem de 1 a 2 repeticiones*/
+
+        console.log("VALIDACION DE LA EXPRESION CON LA PALABRA LOREM FORMA 1");
+        console.log(expReg1.test(cadena)); /*test devuelve un true si la expresion contiene la cadena*/
+        console.log(expReg1.exec(cadena)); /*exec devuelve un arreglo con más  información acerca de la expresion dentro de la cadena*/
+
+        console.log("VALIDACION DE LA EXPRESION CON LA PALABRA LOREM");
+        console.log(expReg2.test(cadena));
+        console.log(expReg2.exec(cadena));
+
+        console.log("VALIDACION DE LA EXPRESION CON NUMEROS DEL 0 al 9");
+        console.log(expReg3.test(cadena));
+        console.log(expReg3.exec(cadena));
+
+        console.log("VALIDACION DE LA EXPRESION CON REPETICIONES DE LA PALABRA LOREM");
+        console.log(expReg4.test(cadena));
+        console.log(expReg4.exec(cadena));
+    </script>
+
+</body>
+</html>

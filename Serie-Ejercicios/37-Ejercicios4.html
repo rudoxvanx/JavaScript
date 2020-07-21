@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios 3</title>
+</head>
+<body>
+    <script>
+    /*
+      
+    */
+
+    /*12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.*/
+    const numeroPrimo=(numero)=>{
+
+        let num_Restos=0;
+        if(numero===0) return console.error("Debes de ingresar un número diferente de cero");
+        if(Math.sign(numero)===-1) return console.error("El número no puede ser negativo");
+
+        for(let i=1;i<=numero;i++){
+            if(numero%i===0) num_Restos+=1;
+        }
+
+        if(num_Restos===2)console.info(`El numero: ${numero} tiene ${num_Restos} divisores por lo tanto es primo`);
+        else console.info(`El numero: ${numero} tiene ${num_Restos} divisores por lo tanto  no es primo`);
+    }
+
+    numeroPrimo(7);
+
+    /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/ 
+    const parImpar=(numero=0)=>{
+      
+      if(!numero) return console.error("Debes ingresar un número");
+      
+      (numero%2===0)
+      ?console.log(`El ${numero} es par`)
+      :console.log(`El ${numero} es impar`)
+    }
+
+    parImpar();
+    
+    /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.*/
+    const conversionGrados=(grados,medida)=>{
+     let resultado;
+     if(medida==="c" || medida==="C") console.info(`${grados}C equivale a ${resultado=((grados*1.8)+32)}`);   
+     if(medida==="f" || medida==="F") console.info(`${grados}F equivale a ${resultado=((grados-32)/1.8)}`);  
+
+    }
+    conversionGrados(68,"f");
+
+
+    </script>
+</body>
+</html>

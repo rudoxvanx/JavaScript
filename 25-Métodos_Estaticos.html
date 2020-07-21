@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Métodos estaticos</title>
+</head>
+<body>
+    <script>
+        class Animal{
+            constructor(nombre,genero){
+                this.nombre=nombre;
+                this.genero=genero;
+                this.raza=null;
+            }
+            
+            sonar(){
+            console.log('Hago sonidos por que estoy vivo');
+            }
+
+            saludar(){
+            console.log(`Hola me llamo ${this.nombre}`);
+            }
+             
+        }
+
+        class Perro extends Animal{
+            constructor(nombre,genero,tamanio){
+                //Manda a llamar el contructor de la clase super
+                super(nombre,genero);
+                this.tamanio=tamanio;                
+            }
+
+            sonar(){
+                console.log("Soy un perro y mi sonido es un ladrido");
+            }
+
+            ladrar(){
+                console.log("Guaw guaw");
+            }
+
+            static queEres(){
+                console.log("Los perros somos animales mamiferos que pertenecemos a la familia de los caninos");
+            }
+
+            get getRaza(){
+                return this.raza;
+            }
+
+            set setRaza(raza){
+                this.raza=raza;
+            }
+
+        }
+
+        const scooby=new Perro("Scooby","Macho","Gigante");
+        console.log(scooby);
+        //Los setters y getters son métodos especiales que nos permiten
+        //establecer y obtener los valores de atributos de nuestra clase
+        Perro.queEres();
+
+
+
+        /*Para la invocación de estos metodos getters y setters se les invoca
+        como propiedades*/
+        scooby.setRaza="Gran Danes"
+        console.log(scooby.getRaza);
+      
+    </script>
+</body>
+</html>

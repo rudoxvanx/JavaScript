@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objetos</title>
+</head>
+<body>
+    <script>
+        let a=new String("Hola");
+
+        //Al declarar un objeto con const evito que otro objeto ocupe la referencia de este objeto 
+        //en memoria {}
+        const b={
+
+        }
+        console.log(b);
+
+        const c=new Object();
+        console.log(c);
+        /*Dentro de un objeto a las variables se les van a llamar atributos y a las funciones
+        métodos*/
+
+        const jon={
+            nombre:"Jon",
+            apellido:"Mircha",
+            edad:35,
+            pasatiempos:["Correr","Hacer ejercicio","Dar clases"],
+            soltero:false,
+            contacto:{
+                email:"email",
+                twitter:"Twitter",
+                movil:"movil"
+            },
+            
+            saludar:function(){
+                console.log("Hola");
+            },
+
+            decirMiNombre:function(){
+                console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} y 
+                me puedes seguir como ${this.contacto.twitter} en twitter`);
+            }
+        }
+
+        console.log(jon);
+        console.log(jon["nombre"]);
+        console.log(jon["apellido"]);
+        console.log(jon.edad);
+        console.log(jon.soltero);
+        console.log(jon.pasatiempos[1]);
+        console.log(jon.contacto);
+        console.log(jon.contacto.twitter);
+        jon.saludar();
+    </script>
+</body>
+</html>

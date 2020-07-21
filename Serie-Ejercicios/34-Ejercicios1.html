@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+      
+    -->
+
+    <script>
+        /*  1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.*/
+        function contarCaracteresCadena(cadena){
+            let tamanio=13;
+
+            console.log(typeof tamanio);
+        }
+
+        function contarCaracteresGemerico(objeto){
+
+            let tipo=typeof objeto;
+
+            switch (tipo) {
+                case "object":
+                    for(let propiedad in objeto) {
+                        
+                        if(typeof objeto[propiedad]==='string'){
+                           console.log(`Este es el tamaño ${propiedad.length} de la cadena ${propiedad} `);}
+                        
+                        else console.log(objeto[propiedad]);
+                    }
+                break;
+                case "string":
+                    console.log(objeto.length);
+                break;
+            }
+
+            
+        }
+
+        objeto={
+            nombre:"Rudolf",
+            edad:26,
+            pasatiempos:['Escuchar musica','Leer','Salir a la calle']
+        }
+        contarCaracteresGemerico(objeto);
+
+        /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".*/
+        function recortarTexto(texto,numero){
+
+            console.log(texto.substring(0,numero))
+        }
+
+        recortarTexto("Rodolfo Fabian García Rodríguez",7);
+
+        /*
+        3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].*/
+       function recortandoPorPalabra(cadena,caracter){
+            let arreglo;
+
+            arreglo=cadena.split(caracter);
+
+            console.log(arreglo);
+       } 
+
+       recortandoPorPalabra("Rodolfo Fabián García Rodríguez"," ");
+
+       /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.*/
+       function repiteTexto(texto,veces){
+           let repeticion="";
+            for(let i=0;i<veces;i++){
+                repeticion+=texto;
+            }
+
+            return repeticion;
+       }
+       
+       let repite=repiteTexto("Rudolf",3);
+       console.log(repite);
+    </script>
+</body>
+</html>

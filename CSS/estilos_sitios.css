@@ -1,0 +1,180 @@
+*{
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+
+#msn_connection{
+    position: absolute;
+    width: 100%;
+}
+
+header h1{
+    text-align: center;
+    background-color: gold;
+    margin: 0;
+    padding: 0;
+}
+
+
+#btn_muestra{
+    position: fixed;
+    left: 96%;
+    top: 95%;
+    z-index: 1;
+}
+
+#btn_inicio{
+    position: fixed;
+    left: 89%;
+    top: 95%;
+    z-index: 1;
+    visibility: hidden;
+
+}
+
+#btn_modo {
+    position:fixed;
+    top:95%;
+    left:1%;
+    z-index: 1;
+}
+
+.muestra_menu{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity:0.8;
+    transition: all 0.9s ease;
+    z-index: 0;
+}
+
+.secciones{
+    width: 100%;
+}
+
+.seccion_dark{
+    background-color:#B0B8B3;
+    color:#fff;
+    height: 100vh;
+    width: 100%;
+}
+
+.seccion_light{
+    background-color: greenyellow;
+    height: 100vh;
+    width: 100%;
+    color: #000;
+}
+#s1{
+    padding-top: 70px;
+}
+
+.show_msn{
+    transform: translateY(-20px);
+}
+
+
+h2{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.navigation_menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.navigation_menu ul{
+    margin: 0;
+    padding: 0;
+}
+
+.menu_oculto{
+    
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    background: #000;
+    transition: all 0.9s ease;
+}
+
+.opciones_menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.contenedor_opciones{
+    display: block;
+    width: 100%;
+}
+.contenedor_opciones li {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.contenedor_opciones li:hover {
+    background: blueviolet;
+}
+
+.contenedor_opciones li a{
+    font-size: 1.8rem;
+    color: #fff;
+    
+}
+
+.contenedor_btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#conte_reloj{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#area-desplazamiento{
+    background-color: goldenrod;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /*justify-content: center;
+    align-items: center;*/
+    position: relative;
+    
+}
+
+#cubito{
+    background-color: indigo;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left:625px;
+    top:279px;
+}
+
+#form1_{
+    display: flex;
+    justify-content: center;
+}

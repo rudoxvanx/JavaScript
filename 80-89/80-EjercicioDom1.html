@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio1 DOM</title>
+    <style>
+
+        *{
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        header h1{
+            text-align: center;
+            background-color: gold;
+            margin: 0;
+            padding: 0;
+        }
+
+        #btn_muestra{
+            position: fixed;
+            left: 96%;
+            top: 95%;
+            z-index: 1;
+        }
+
+        .muestra_menu{
+
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000;
+            opacity:0.8;
+            transition: all 0.9s ease;
+            z-index: 0;
+        }
+
+        .secciones{
+            width: 100%;
+        }
+        .seccion{
+            background-color: greenyellow;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .seccion h2{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .navigation_menu{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .navigation_menu ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu_oculto{
+            
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            background: #000;
+            transition: all 0.9s ease;
+        }
+
+        .opciones_menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        .contenedor_opciones{
+            display: block;
+            width: 100%;
+        }
+        .contenedor_opciones li {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .contenedor_opciones li:hover {
+            background: blueviolet;
+        }
+
+        .contenedor_opciones li a{
+            font-size: 1.8rem;
+            color: #fff;
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ejercicios DOM</h1>
+    </header>
+    <button id="btn_muestra">Menu</button>
+   
+    <aside class="menu_oculto">    
+        <nav class="navigation_menu">
+            <ul class="opciones_menu">
+                <div class="contenedor_opciones">
+                    <li><a href="#s1">Seccion 1</a></li>
+                    <li><a href="#s2">Seccion 2</a></li>
+                    <li><a href="#s3">Seccion 3</a></li>
+                    <li><a href="#s4">Seccion 4</a></li>
+                    <li><a href="#s5">Seccion 5</a></li>
+                </div>
+            </ul>
+        </nav>
+    </aside>
+
+    <section id="s1" class="seccion">
+        <h2>Seccion 1</h2>
+    </section>
+    <section id="s2" class="seccion">
+        <h2>Seccion 2</h2>
+    </section>
+    <section id="s3" class="seccion">
+        <h2>Seccion 3</h2>
+    </section>
+    <section id="s4" class="seccion">
+        <h2>Seccion 4</h2>
+    </section>
+    <section id="s5" class="seccion">
+        <h2>Seccion 5</h2>
+    </section>
+     
+
+    <script>
+        const $btn=document.getElementById("btn_muestra"),
+        $menu=document.querySelector(".menu_oculto");
+        
+        $btn.addEventListener("click",(e)=>{
+            
+            if($menu.classList.contains("menu_oculto")){
+                $menu.classList.remove("menu_oculto");
+                $menu.classList.add("muestra_menu");
+            }else{
+                $menu.classList.add("menu_oculto");
+                $menu.classList.remove("muestra_menu");
+            }
+         
+         
+        });
+    </script>
+</body>
+</html>

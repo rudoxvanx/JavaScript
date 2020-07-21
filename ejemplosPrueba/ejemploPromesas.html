@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo promesas</title>
+</head>
+<body>
+    <script>
+        const myAsyncFunction=()=>{
+
+            return new Promise((resolve,reject)=>{
+                if(8>4) resolve("Exito");
+                else reject("Fallo");
+            });
+        }
+
+        
+        myAsyncFunction()
+        .then(result=>console.log(result),
+              e=>console.log(`Error capturado: ${e}`));
+        
+        /*
+        const promesa=new Promise((resolve,reject)=>{
+                if(8>4)
+                   resolve("Exito");
+                else reject("Fallo");
+        });
+
+        promesa.then(result=>console.log(result),e=>console.log(`Error capturado: ${e}`));
+        */
+
+        const delay=time=>new Promise(resolveCallback=>setTimeout(resolveCallback,time));
+
+        delay(3000)
+        .then(()=>console.log(`Este es un retardo de almenos 3 segundos`))
+        .catch(()=> console.log(`Retardo fallido`));
+
+        function* conuntThree(){
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        const generator=conuntThree();
+        console.log(generator.next());
+        console.log(generator.next());
+        console.log(generator.next());
+        console.log(generator.next());
+
+        function* famousNames(){
+            console.log("Devuelvo Luke");
+            let received=yield "Luke";
+            console.log(`Recibido ${received} y devuelvo "Homer"`);
+            received=yield "Homer";
+            console.log(`Recibo "${received}" y devuelvo "Bugs"`);
+            received=yield"Bugs";
+            console.log(`Recibo "${received}"`);
+        }
+
+        const generator2=famousNames();
+        let returned=generator2.next();
+        returned=generator2.next(`${returned.value} SKywalker`);
+        returned=generator2.next(`${returned.value} Simpson`);
+        returned=generator2.next(`${returned.value} Bunny`);
+        generator2.next();
+
+       
+       /*Apilar varios await implica una espera sincrona*/
+       async function wait(){
+           await delay(500);
+           await delay(500);
+           return "Ha transcurrido, como mínimo, 1 segundo";
+       } 
+
+       /*Creacion de una espera paralela*/
+       async function wait(){
+           const d1=delay(500);
+           const d2=delay(500);
+           await d1;
+           await d2;
+           return "Ha transcurrido, como mínimo, 500ms";
+       } 
+
+        async function wait() {
+            const d1 = delay(500);
+            const d2 = delay(500);
+            await Promise.all([d1, d2]);
+            return "Ha transcurrido, como mínimo, 500ms.";
+        };
+        
+
+    </script>
+</body>
+</html>

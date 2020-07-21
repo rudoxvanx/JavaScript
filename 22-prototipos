@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototipos</title>
+</head>
+<body>
+    <script>
+        /*  
+            POO
+            Clases     --> Esquema, modelo o machote a utilizar
+            Objetos    --> Es una instacia de una clase
+            Atributos  --> Propiedad o caracteristica (variables dentro de un objeto)
+            Métodos    --> Acciones o funciones dentro de un objeto puede realizar
+
+            Javascript es un lenguaje basado en prototipos y no en clases
+            Transformar un clases a una function prototipal
+
+            PROTOTIPO
+            En javascript es un mecanismo por el cual un objeto puede heredar atributos 
+            y métodos.
+
+            Herencia se hace mediante la cadena de prototipos
+            Prototipo más conocido es Object en JS
+        */
+
+        /*
+            const animal={
+                nombre:'Rudolf',
+                sonar(){
+                    console.log('Hago sonidos por que estoy vivo');
+                }
+            }
+
+            const animal2={
+                nombre:'Antonio',
+                sonar(){
+                    console.log('Hago sonidos por que estoy vivo');
+                }
+            }
+            console.log(animal);
+            console.log(animal2);
+        */
+        
+
+        //Funcion constructura
+        function Animal(nombre,genero){
+            this.nombre=nombre;
+            this.genero=genero;
+
+            this.sonar=function(){
+                console.log('Hago sonidos por que estoy vivo');
+            }
+        }
+
+
+    </script>
+</body>
+</html>

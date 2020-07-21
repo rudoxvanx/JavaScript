@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*Las funciones son muy poderosas se pueden asignar como valores o incluir como parametro
+         dentro de otras funciones*/
+
+        //Declaracion de funcion
+         function estoEsUnaFuncion(){
+            console.log("Uno");
+            console.log("Dos");
+            console.log("Tres");
+         }
+          //Invocacion de funcion
+         // estoEsUnaFuncion();
+
+         function unaFuncionQueDevuelveValor(){
+            console.log("Uno");
+            return 19;
+            console.log("Dos");
+            console.log("Tres");
+            return "La funcion ha retornado una cadena de texto"; 
+        }
+
+        //let valorDeFuncion=unaFuncionQueDevuelveValor();
+        //console.log(valorDeFuncion);
+
+        //Asignar un valor por defecto
+        function saludar(nombre="Desconocido",edad=0)
+        {
+            console.log(`Hola mi nombre es ${nombre} y tengo ${edad}`);
+        }
+
+        //saludar('Kenay',7);
+        //saludar();
+
+        funcionDeclarada();
+        //Funciones declaradas VS funciones expreadas
+        function funcionDeclarada(){
+            console.log("Esto es una funcion declarada puede invocarse en cualquier parte de nuestro código incluso antes de que la función sea declarada")
+        }
+
+        funcionDeclarada();
+
+        funcionExpresada();
+        //Funcion anónima
+        const funcionExpresada=
+        function(){
+            console.log('Esto es una funcion expresada es decir una función que se la ha asignado un valor a una variable, si invocamos esta función antes de su definición JS nos dira....');
+        }
+
+        funcionExpresada();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio clases</title>
+</head>
+<body>
+    <script>
+        class Persona{
+            constructor(nombre,edad,genero){
+                this.nombre=nombre;
+                this.edad=edad;
+                this.genero=genero;
+            }
+
+            obtDetalles(){
+                console.log(`Esta es mi nombre ${this.nombre} 
+                esta es mi edad ${this.edad} 
+                esta este es mi genero ${this.genero}`); 
+            }
+        }
+
+        class Estudiante extends Persona{
+            
+            constructor(nombre,edad,genero,curso,gpo){
+                super(nombre,edad,genero);
+                this.curso=curso;
+                this.gpo=gpo;
+            }
+
+            registrar(){
+                console.log("Este es el método registrar")
+            }
+        }
+
+        class Profesor extends Persona{
+            constructor(nombre,edad,genero,asignatura,nivel){
+                super(nombre,edad,genero);
+                this.asignatura=asignatura;
+                this.nivel=nivel;
+            }
+
+            asignar(){
+                console.log("Asignar");
+            }
+        }
+
+        const alumno=new Estudiante("Rafa","26","Masculino","Ingles","11"),
+        maestro=new Profesor("Everardo","34","Masculino","Programacion","13");
+
+        console.log(alumno);
+        console.log(maestro);
+        alumno.registrar();
+        maestro.asignar();
+
+
+    </script>
+</body>
+</html>

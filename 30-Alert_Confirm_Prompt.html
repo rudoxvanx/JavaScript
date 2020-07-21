@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alert Confirm Prompt</title>
+</head>
+<body>
+    <script>
+            console.log(window);
+            /*
+                No es necesario llamar a estos metodos desde el objeto window
+            */
+            /*
+            window.alert("Hola esto es una alerta");
+            window.confirm("Esto es una confirmacion");
+            window.prompt("Esto es una confirmacion");
+            */
+           let alerta=alert("Hola esto es una alerta");
+           let confirmacion= confirm("Esto es una confirmacion");
+           let aviso= prompt("Esto es un aviso y le permite al usario ingresar un valor");
+
+            /*Mandar mensaje al usuario*/
+            console.log(alerta);
+        
+            /*Mensaje de confirmación si el usario da clic en acceptar se guardara un
+            true*/
+            console.log(confirmacion);
+            /*Mensaje para ingresar un valor de entrada por el usuario, se imprimira
+            ese mensaje ingresado*/
+            console.log(aviso);
+
+    </script>
+</body>
+</html>

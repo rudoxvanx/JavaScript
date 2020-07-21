@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let contador=0;
+
+    while(contador<10)
+    {
+        console.log(contador);
+        contador++;
+    }
+
+    do{
+        console.log("do while"+contador);
+        contador++;
+    }while(contador<10);
+
+    for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
+
+    const numeros=[10,20,30,40,5060,70,80,90];
+
+    for(let i=0;i<numeros.length;i++)
+    {
+        console.log(numeros[i]);
+    }
+
+    const jon={
+        nombre:"Jon",
+        apellido:"Mircha",
+        edad:35
+    }
+
+    for(const prop in jon){
+        console.log(`Key:${prop},Values:${jon[prop]}`);
+    }
+
+    for(const elemento of numeros ){
+        console.log(elemento);
+    }
+
+    let cadena='Hola mundo';
+    for(const caracter of cadena ){
+        console.log(caracter);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototipos</title>
+</head>
+<body>
+    <script>
+        /*  
+            POO
+            Clases     --> Esquema, modelo o machote a utilizar
+            Objetos    --> Es una instacia de una clase
+            Atributos  --> Propiedad o caracteristica (variables dentro de un objeto)
+            Métodos    --> Acciones o funciones dentro de un objeto puede realizar
+
+            Javascript es un lenguaje basado en prototipos y no en clases
+            Transformar un clases a una function prototipal
+
+            PROTOTIPO
+            En javascript es un mecanismo por el cual un objeto puede heredar atributos 
+            y métodos.
+
+            Herencia se hace mediante la cadena de prototipos
+            Prototipo más conocido es Object en JS
+        */
+
+        /*  */
+            const animal={
+                nombre:'Rudolf',
+                sonar(){
+                    console.log('Hago sonidos por que estoy vivo');
+                }
+            }
+
+            const animal2={
+                nombre:'Antonio',
+                sonar(){
+                    console.log('Hago sonidos por que estoy vivo');
+                }
+            }
+            console.log(animal);
+            console.log(animal2);
+      
+        
+
+        //Funcion constructura
+        /*
+            //*******VERSION_1
+            
+            function Animal(nombre,genero){
+                this.nombre=nombre;
+                this.genero=genero;
+
+                this.sonar=function(){
+                    console.log('Hago sonidos por que estoy vivo');
+                }
+
+                this.saludar=function(){
+                    console.log(`Hola me llamo ${this.nombre}`);
+                }
+            }
+        */
+        
+        
+        /*
+            Funcion constructura donde asignamos los métodos
+            al prototipo no a la función como tal.
+        */
+        function Animal(nombre,genero){
+                this.nombre=nombre;
+                this.genero=genero;
+        }
+
+        //Métodos agregados al prototipo de la función constructura
+        Animal.prototype.sonar=function(){
+                console.log('Hago sonidos por que estoy vivo');
+        }
+
+        Animal.prototype.saludar=function(){
+            console.log(`Hola me llamo ${this.nombre}`);
+        }
+
+        const persona1=new Animal("Rudolf","Macho");
+        const persona2=new Animal("Antonio","Hembra");
+
+        console.log(persona1);
+        console.log(persona2);
+        persona1.sonar();
+        persona1.saludar();
+        persona2.sonar();
+        persona2.saludar();
+
+    </script>
+</body>
+</html>

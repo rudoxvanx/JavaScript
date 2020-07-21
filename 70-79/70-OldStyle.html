@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        /*
+        Variables CSS disponibles en todos los selectores de nuestro
+        documento.Se colocan en root.
+        */
+        :root{
+            --yellow-color:#F7DF1E;
+            --dark-color:#222;
+        }
+
+        .cards{
+            border:thin solid var(--dark-color);
+            padding:1rem ;
+        }
+        .card{
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--yellow-color);
+        }
+        .card figcaption{
+            padding: 1rem;
+        }
+
+        .rotate-45{
+            transform: rotate(45deg);
+        }
+
+        .rotate-135{
+            transform: rotate(135deg);
+        }
+
+        .opacity-80{
+            opacity:.8;
+        }
+
+        .sepia{
+            filter: sepia(1);
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h3>Manejo del DOM</h3>
+    <p id="que-es">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Deleniti, omnis doloribus ducimus perspiciatis facilis 
+        quo est nam dolorem nihil, porro nemo suscipit autem 
+        quasi accusamus ipsum quod exercitationem beatae praesentium.
+    </p>
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Seccion1</a></li>
+            <li><a href="#">Seccion2</a></li>
+            <li><a href="#">Seccion3</a></li>
+            <li><a href="#">Seccion4</a></li>
+            <li><a href="#">Seccion5</a></li>
+        </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="Nombre">
+    <a href="dom.html" class="link-dom" style="background-color:#F7DF1E; color:#222" data-id="1" data-description="Document ObjectModel">DOM</a>
+    <section class="cards">
+        <figure class="card">
+            <img src="" alt="https://placeimg.com/200/200/tech" alt="Tech">
+            <figcaption>Tech</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="" alt="https://placeimg.com/200/200/animals" alt="Animals">
+            <figcaption>Animals</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="" alt="https://placeimg.com/200/200/arch" alt="People">
+            <figcaption>People</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="" alt="https://placeimg.com/200/200/arch" alt="Tech">
+            <figcaption>Tech</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="" alt="https://placeimg.com/200/200/nature" alt="Nature">
+            <figcaption>Nature</figcaption>
+        </figure>
+    </section>
+    <template id="template-card">
+        <figure class="card">
+            <img>
+            <figcaption></figcaption>
+        </figure>
+    </template>
+    
+    <script src="../js/70-79/70-OldStyle.js"></script>
+</body>
+</html>
