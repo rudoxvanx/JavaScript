@@ -8,6 +8,7 @@ import resposiveMedia from "./objeto_responsive.js";
 import responsiveTester from "./prueba_responsive.js";
 import userDeviceInfo from "./deteccion_dispositivo.js";
 import networkStatus from "./deteccion_red.js";
+import webcam from "./deteccion_webcam.js";
 
 const d = document;
 
@@ -33,6 +34,7 @@ d.addEventListener("DOMContentLoaded", e => {
     </iframe>`);
     responsiveTester("responsive_tester");
     userDeviceInfo("user-device");
+    webcam("webcam");
     
 });
 
