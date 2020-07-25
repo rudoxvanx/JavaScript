@@ -178,3 +178,17 @@ h2{
     display: flex;
     justify-content: center;
 }
+
+#btn_busqueda{
+    width: 100%;
+}
+
+.card{
+    display: inline-block;
+}
+
+.input_busqueda{
+    display:flex;
+    justify-content: center;
+    padding: 30px;
+}
