@@ -10,6 +10,7 @@ import userDeviceInfo from "./deteccion_dispositivo.js";
 import networkStatus from "./deteccion_red.js";
 import webcam from "./deteccion_webcam.js";
 import getGeolocalizacion from "./geolocalizacion.js";
+import searchFilters from "./filtro_busquedas.js";
 
 
 const d = document;
@@ -38,6 +39,7 @@ d.addEventListener("DOMContentLoaded", e => {
     userDeviceInfo("user-device");
     webcam("webcam");
     getGeolocalizacion("geolocalizacion");
+    searchFilters(".card-filter",".card")
     
 });
 
