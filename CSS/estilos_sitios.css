@@ -197,3 +197,53 @@ h2{
     display: flex;
     justify-content: center;
 }
+
+
+/*******ESTILOS SLIDER IMAGENES*******/
+#container_slider{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slider{
+    height: 450px;
+    width: 750px;
+    /*display: none;*/
+}
+
+.slider img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.anterior,.siguiente{  
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: rgb(131, 127, 127);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.siguiente{
+    right: 330px;
+    border-radius: 3px 0 0 3px;
+}
+
+.anterior{
+    left: 330px;
+    border-radius: 3px 0 0 3px;
+}
+
+.noVisible{
+    display: none;
+}
+
