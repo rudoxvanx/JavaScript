@@ -12,6 +12,7 @@ import webcam from "./deteccion_webcam.js";
 import getGeolocalizacion from "./geolocalizacion.js";
 import searchFilters from "./filtro_busquedas.js";
 import draw from "./sorteo_digital.js";
+import slider from "./carrusel.js";
 
 
 const d = document;
@@ -41,7 +42,8 @@ d.addEventListener("DOMContentLoaded", e => {
     webcam("webcam");
     getGeolocalizacion("geolocalizacion");
     searchFilters(".card-filter",".card");
-    draw(".winner-btn",".player")
+    draw(".winner-btn",".player");
+    slider();
 
     
 });

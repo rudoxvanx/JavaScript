@@ -30,6 +30,6 @@ const getWinnerComment = (selector) => {
     return `El ganador es: ${winner.textContent}`;
 }
 
-getWinnerComment("ytd-comment-thread-renderer #author-text span");
+//getWinnerComment("ytd-comment-thread-renderer #author-text span");
 
 //https://www.indeed.com.mx/trabajo?q=inform%C3%A1tica&l=San%20Luis%20Potos%C3%AD%2C%20S.%20L.%20P.&vjk=645bcbaaa0ea612d
