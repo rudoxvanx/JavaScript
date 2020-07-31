@@ -19,19 +19,27 @@
     <button id = "btn_modo">Modo</button>
 
     <aside class="menu_oculto">    
-        <nav class="navigation_menu">
+        <nav class="">
             <ul class="opciones_menu">
                 <div class="contenedor_opciones">
-                    <li><a href="#s1">Seccion 1</a></li>
-                    <li><a href="#s2">Seccion 2</a></li>
-                    <li><a href="#s3">Seccion 3</a></li>
-                    <li><a href="#s4">Seccion 4</a></li>
-                    <li><a href="#s5">Seccion 5</a></li>
+                    <li><a href="#s1" class="opcion">Seccion 1</a></li>
+                    <li><a href="#s2" class="opcion">Seccion 2</a></li>
+                    <li><a href="#s3" class="opcion">Seccion 3</a></li>
+                    <li><a href="#s4" class="opcion">Seccion 4</a></li>
+                    <li><a href="#s5" class="opcion">Seccion 5</a></li>
+                    <li><a href="#s6" class="opcion">Seccion 6</a></li>
+                    <li><a href="#s7" class="opcion">Seccion 7</a></li>
+                    <li><a href="#s8" class="opcion">Seccion 8</a></li>
+                    <li><a href="#s9" class="opcion">Seccion 9</a></li>
+                    <li><a href="#s10" class="opcion">Seccion 10</a></li>
+                    <li><a href="#s11" class="opcion">Seccion 11</a></li>
+                    <li><a href="#s12" class="opcion">Seccion 12</a></li>
+                    <li><a href="#s13" class="opcion">Seccion 13</a></li>
                 </div>
             </ul>
         </nav>
     </aside>
-
+    
     <section id="s1" class="seccion_light">
         <h2>Seccion 1</h2>
         <div class="contenedor_btns">
@@ -168,7 +176,7 @@
             <a class="siguiente">&#10095;</a>
         </div>
     </section>
-    <section>
+    <section id="s13" class="seccion_light">
         <h2>Intersection Observer JS</h2>
     </section>    
     <script src="../js/scripts/indexDom.js" type="module"></script>
@@ -176,7 +184,7 @@
         const $btn=document.getElementById("btn_muestra"),
         $menu=document.querySelector(".menu_oculto");
         
-        $btn.addEventListener("click",(e)=>{
+        $btn.addEventListener("click",(e) => {
             
             if($menu.classList.contains("menu_oculto")){
                 $menu.classList.remove("menu_oculto");
@@ -244,7 +252,6 @@
                 v.stop(alarma.currentTime + 800 * 0.001);
                 
             },1000);
-
             
         });
 
@@ -446,13 +453,9 @@
                    $content_loaded.appendChild(iframe2);
                 }
 
-
             }
 
-
-        })
-
-        
+        })        
       </script>
 </body>
 </html>

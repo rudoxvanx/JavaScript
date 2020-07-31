@@ -6,6 +6,7 @@ import geolocalizacion from "./deteccion_localizacion.js";
 import busqueda from "./filtro_busqueda.js";
 import getAleatorio from "./sorteo_digital.js";
 import { plusSlides,showSlides } from "./slider.js";
+import iniciarObservador from "./observador.js";
 
 
 
@@ -18,10 +19,12 @@ d.addEventListener("DOMContentLoaded",e =>{
     geolocalizacion("info_geo");
     getAleatorio("#btn_ganador");
     showSlides(1);
+    iniciarObservador(".seccion_light",".opcion");
 });
 
 IsConection("msn_connection");
 busqueda("input","busqueda");
 plusSlides(".anterior",".siguiente");
+
 
 
