@@ -1,7 +1,7 @@
 export default function hamburgerMenu(panelBtn,panel,menuLink){
     const d=document;
 
-    d.addEventListener("click",e=>{
+    d.addEventListener("click",e => {
         if(e.target.matches(panelBtn) || e.target.matches(`${panelBtn} *`)){
            console.log("Hola")
            document.querySelector(panel).classList.toggle("is-active");
