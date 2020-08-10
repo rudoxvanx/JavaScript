@@ -7,6 +7,8 @@ import busqueda from "./filtro_busqueda.js";
 import getAleatorio from "./sorteo_digital.js";
 import { plusSlides,showSlides } from "./slider.js";
 import iniciarObservador from "./observador.js";
+import observerVideo from "./observer_video.js";
+import visibilidad from "./visibilidadPagina.js";
 
 
 
@@ -20,6 +22,8 @@ d.addEventListener("DOMContentLoaded",e =>{
     getAleatorio("#btn_ganador");
     showSlides(1);
     iniciarObservador(".seccion_light",".opcion");
+    observerVideo("video[data-video]");
+    visibilidad();
 });
 
 IsConection("msn_connection");
