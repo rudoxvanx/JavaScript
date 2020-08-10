@@ -23,12 +23,12 @@ d.addEventListener("DOMContentLoaded",e =>{
     showSlides(1);
     iniciarObservador(".seccion_light",".opcion");
     observerVideo("video[data-video]");
-    visibilidad();
+    
 });
 
 IsConection("msn_connection");
 busqueda("input","busqueda");
 plusSlides(".anterior",".siguiente");
-
+visibilidad();
 
 
