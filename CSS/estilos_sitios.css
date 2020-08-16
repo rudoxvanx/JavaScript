@@ -267,3 +267,27 @@ h2{
         overflow-y: auto;
     }
 }
+
+
+#form-vali{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#form-vali form input{
+    width: 800px;
+    height: 20px;
+}
+
+.no-message{
+    display: block;
+    height: 18px;
+
+}
+.message{
+    display: block;
+    height: 18px;
+    background-color: red;
+}

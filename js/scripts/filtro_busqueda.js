@@ -16,6 +16,7 @@ export default function busqueda(id_input,id_busqueda){
         for (const $card of $cards) {
             $figcaption = $card.getElementsByTagName("figcaption")[0];
             textValue = $figcaption.innerText || $figcaption.textContent;
+            
             if(textValue.toUpperCase().indexOf(filtro) > -1){
                 $card.style.display = "";
             }else{

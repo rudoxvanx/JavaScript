@@ -9,6 +9,7 @@ import { plusSlides,showSlides } from "./slider.js";
 import iniciarObservador from "./observador.js";
 import observerVideo from "./observer_video.js";
 import visibilidad from "./visibilidadPagina.js";
+import validacionForm from "./validacion-formulario.js";
 
 
 
@@ -23,6 +24,7 @@ d.addEventListener("DOMContentLoaded",e =>{
     showSlides(1);
     iniciarObservador(".seccion_light",".opcion");
     observerVideo("video[data-video]");
+    validacionForm();
     
 });
 
