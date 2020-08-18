@@ -272,8 +272,7 @@ h2{
 #form-vali{
     display: flex;
     justify-content: center;
-    width: 90%;
-    margin: 0 auto;
+ 
 }
 
 #form-vali form input{
@@ -290,4 +289,13 @@ h2{
     display: block;
     height: 18px;
     background-color: red;
+}
+
+#container-voz{
+    display: flex;
+    justify-content: center;
+}
+
+#elements-voz{
+    padding: 30px;
 }

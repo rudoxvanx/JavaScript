@@ -10,6 +10,7 @@ import iniciarObservador from "./observador.js";
 import observerVideo from "./observer_video.js";
 import visibilidad from "./visibilidadPagina.js";
 import validacionForm from "./validacion-formulario.js";
+import narrarVoz from "./narrador-voz.js";
 
 
 
@@ -25,6 +26,7 @@ d.addEventListener("DOMContentLoaded",e =>{
     iniciarObservador(".seccion_light",".opcion");
     observerVideo("video[data-video]");
     validacionForm();
+    narrarVoz();
     
 });
 
