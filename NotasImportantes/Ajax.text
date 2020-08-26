@@ -1,0 +1,46 @@
+AJAX:Asynchronus Javascript and XML
+
+XML: Intercambio de información entre una tecnologia
+
+AJAX: Interfaz entre la interfaz de usuario y el navegador
+AJAX: Naturaleza asincrona
+
+///***MÉTODOS PARA REALIZAR PETICIONES AJAX***///
+--ACTIVEXObject: Navegadores viejos
+--XMLHttpRequest
+--ApiFetch
+
+Librerias Externas
+--Jquery.Ajax(): Libreria crossbrowser que detectaba en que navegador se 
+                 encontraba
+--Axios:Libreria basada en promesas.Cliente de peticiones http
+--etc
+
+AJAX no es una tecnologia, más bien es la unión de varias tecnologias que
+tiene como unificador Javascript.
+
+1-HTML y CSS: Para crear las interfaces que el usuario va a ver y 
+que van a cambiar sin la necesidad de recargar la página.
+
+2-DOM: Utilización de la API de JS para la parte de manipulación para
+la presentación de nuestros datos
+
+3-HTML,XML,JSON: Para el Intercambio de información
+
+4-XMLHttpRequest o Fetch: Para el intercambio asincrono de la información
+5-Javascript: Orquestador
+
+6-Estados de la petición:
+    READY_STATE_UNINITIALIZED=0(Se inicia la petición cliente se comunica con el servidor)
+    READY_STATE_LOADING=1(Cargando,enviar datos al servidor)
+    READY_STATE_LOADED=2(El servidor respondio al cliente,pero el cliente aún no tiene la información lista para interactuar)
+    READY_STATE_LOADING=3(El motor de JS ya tiene acceso a los datos)
+    READY_STATE_COMPLETE=4(EL proceso ha terminado)
+
+CODIGOS DE ESTADOS DE RESPUESTA HTTP:
+
+--Respuestas informativas (100–199),
+--Respuestas satisfactorias (200–299),
+--Redirecciones (300–399),
+--Errores de los clientes (400–499),
+--Errores de los servidores (500–599).
