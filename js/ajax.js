@@ -96,4 +96,50 @@
     .finally(() => {
         console.log('Esto se ejecutara independientemente de la promesa fetch');
     });
-})()
+})();
+
+
+(() => {
+
+    const $fetchAsync = document.getElementById('fetch-async'),
+    $fragment = document.createDocumentFragment();
+
+    async function getData(){
+        try{
+
+            let respuesta = await fetch('https://jsonplaceholder.typicode.com/user'),
+            json = await respuesta.json();
+
+            if(!respuesta.ok){
+                //Los errores solo aceptan texto y no objetos
+                //throw new Error("Ocurrio un Error al solicitar los datos");
+                
+                throw {
+                    status:respuesta.status,
+                    statusText:respuesta.statusText
+                }
+            }
+            console.log(respuesta,json);
+            json.forEach(el => {
+                const $li = document.createElement("li");
+                $li.innerHTML = `${el.name} -- ${el.email} --${el.phone} `;
+                $fragment.appendChild($li);
+            });
+    
+            $fetchAsync.appendChild($fragment);
+        }catch(err){
+            console.log(err);
+            let message = err.statusText || 'Ocurrio un error';
+            $fetchAsync.innerHTML = `Error ${err.status}:${message}`;
+        
+        }finally{
+            console.log('Esto se ejecutara independientemente de la promesa fetch');
+            
+        }
+    }
+
+    getData();
+})();
+
+
+
