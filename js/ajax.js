@@ -98,7 +98,6 @@
     });
 })();
 
-
 (() => {
 
     const $fetchAsync = document.getElementById('fetch-async'),
@@ -114,6 +113,8 @@
                 //Los errores solo aceptan texto y no objetos
                 //throw new Error("Ocurrio un Error al solicitar los datos");
                 
+                //No se puede rechazar la promesa como en el ejemplo anterior
+                //throw enviara el flujo hacia el catch
                 throw {
                     status:respuesta.status,
                     statusText:respuesta.statusText
@@ -139,6 +140,32 @@
     }
 
     getData();
+})();
+
+(() => {
+    const $axios = document.getElementById('axios'),
+    $fragment = document.createDocumentFragment();
+
+    //Axios ya nos da la conversion de los datos y la manipulacion del error 
+    axios
+    .get('https://jsonplaceholder.typicode.com/user')
+    .then(res => {
+        console.log(res);
+        let json = res.data;
+
+        json.forEach(el => {
+            const $li = document.createElement("li");
+            $li.innerHTML = `${el.name} -- ${el.email} --${el.phone} `;
+            $fragment.appendChild($li);
+        });
+        $axios.appendChild($fragment)
+    })
+    .catch(err => {
+        console.log('Estamos en el catch',err.response);
+        let message = err.response.statusText || 'Ocurrio un error';
+        $axios.innerHTML = `Error ${err.response.status}:${message}`;
+    })
+    .finally(()=>{console.log('Esto se ejecutara independientemente del resultado Axios')});
 })();
 
 
