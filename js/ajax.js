@@ -7,10 +7,18 @@
   Para eso utilizamos un fragmento y ahí insertamos todos 
   los datos recuperados y al final ya solamente insertamos. 
 */
+
+/*
+    Entorno local de servidor web.
+    Usar live server para cambiar el protocolo C:// a http
+*/
+
+
+/*PETICIONES AJAX POR EL METODO XmlHttpRequest*/
 (() => {
     /*PASO 1 INSTANCIAR EL OBJETO DE LA PETICION*/
     const xhr = new XMLHttpRequest(),
-    $xhr =document.getElementById('xhr'),
+    $xhr = document.getElementById('xhr'),
     $fragment = document.createDocumentFragment();
 
     
@@ -18,7 +26,7 @@
     /*
       xhr.onreadystatechange();
       readystatechange:Es ejecutado cuando detecta un cambio en el estado
-      ya sea aceptado,rechazado,abortado o lanzado un error completado.
+      ya sea aceptado,rechazado,abortado o lanzado un error, completado.
     */
 
     /*PASO 2
@@ -26,6 +34,10 @@
     */
     xhr.addEventListener('readystatechange',(e) => {
         
+        /*Valida solo cuando el ready state sea igual a 4, no me 
+          importa el cargado,el abortado o interactivo yo me concentro
+          unicamente en el estado completado para trabajar con lo obtenido 
+          en la petición*/
         if(xhr.readyState !== 4) return;
         
         console.log(xhr);  
@@ -66,6 +78,7 @@
 
 })();
 
+/*PETICIONES AJAX POR EL METODO Fetch*/
 (() => {
     const $fetch = document.getElementById('fetch'),
     $fragment = document.createDocumentFragment();
@@ -98,6 +111,7 @@
     });
 })();
 
+/*PETICIONES AJAX POR EL METODO Fetch Async*/
 (() => {
 
     const $fetchAsync = document.getElementById('fetch-async'),
@@ -106,7 +120,7 @@
     async function getData(){
         try{
 
-            let respuesta = await fetch('https://jsonplaceholder.typicode.com/user'),
+            let respuesta = await fetch('https://jsonplaceholder.typicode.com/users'),
             json = await respuesta.json();
 
             if(!respuesta.ok){
@@ -142,13 +156,14 @@
     getData();
 })();
 
+/*PETICIONES AJAX POR LA LIBRERIA Axios*/
 (() => {
     const $axios = document.getElementById('axios'),
     $fragment = document.createDocumentFragment();
 
     //Axios ya nos da la conversion de los datos y la manipulacion del error 
     axios
-    .get('https://jsonplaceholder.typicode.com/user')
+    .get('https://jsonplaceholder.typicode.com/users')
     .then(res => {
         console.log(res);
         let json = res.data;
@@ -168,5 +183,37 @@
     .finally(()=>{console.log('Esto se ejecutara independientemente del resultado Axios')});
 })();
 
+
+/*PETICIONES AJAX POR LA LIBRERIA Axios-Async*/
+(() => {
+    const $axiosAsync = document.getElementById('axios-asyc'),
+    $fragment = document.createDocumentFragment();
+
+    async function getData(){
+        try{
+  
+            let res= await axios.get('https://jsonplaceholder.typicode.com/users'),
+            json = await res.data;
+            //console.log(res,json);
+            
+            json.forEach(el => {
+                const $li = document.createElement("li");
+                $li.innerHTML = `${el.name} -- ${el.email} --${el.phone} `;
+                $fragment.appendChild($li);
+            });
+
+            $axiosAsync.appendChild($fragment)
+
+        }catch(err){
+            console.log(err.response);
+            let message = err.response.statusText || 'Ocurrio un error';
+            $axiosAsync.innerHTML = `Error ${err.response.status}:${message}`;
+
+        }finally{
+            console.log('Esto se ejecutara independientemente del try...catch');
+        }
+    }
+    getData();
+})();
 
 
