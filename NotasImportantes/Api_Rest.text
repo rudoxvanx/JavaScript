@@ -1,0 +1,71 @@
+/******INTRODUCCION A API REST******/
+
+¿Qué es API?
+--Aplication Programming Interface
+--Es un conjunto de rutinas que nos proveen accesos 
+  a ciertas funcionalidades de un documento en específico
+  Ejemp: API de localizacion, Api de del DOM
+
+Clasificación de APIS
+--Nativas
+  Ejemp, el motor de JS para acceder al DOM,camara,
+  geolocalizacion,bateria,estados de conexion a internet
+
+--Externas
+  Son programadas por terceros
+
+  Arquitectura en API REST
+  
+  URL para obtener informacion, Api de twiter, de Worpress
+  acceder a ellas por medio de la programacion de un front en html.
+
+  Si utilizamos la API de Worpress podemos realizar
+  nuestro front en html y no depender tanto de las plantillas
+  de Worpress.
+
+  Rutas o endpoint 
+
+  ¿Qué es REST?
+  --Termino acuñado en una tesis doctoral Roy Fielding
+    padre de especicación http establecio las reglas
+    para el protocolo que es en el que se nave por internet.
+
+  --Rest se basa en las reglas del protocolo http
+  --Servicio REST es conjunto de restriciones con la
+    que podemos crear un estilo de arquitectura
+
+  SISTEMA API DE TIPO REST O REST FULL
+  --Características importantes
+    Primero: La relacion cliente servidor en un esquema
+    MVC. En API REST el cliente y el servidor estan
+    debilmente desacoplados.
+
+    Al cliente no le interesa saber como son mandados los
+    datos(xml,json).
+    
+    Al servidor no le interesa como seran visualizados los 
+    datos.
+
+    Segundo: Sin estado cada peticion recibida por el servidor
+    se maneja de manera independiente lo que evita  mantener 
+    sesiones conectadas para hacer varias peticiones al mismo 
+    tiempo.
+
+    Tercero: Debe haber un sistema de almacenamiento en 
+    cache para evitar repetitivas conexiones hacia un mismo recurso
+    del servidor lo cual tiene un impacto en las aplicaciones para
+    reducir el tiempo de carga.
+
+    Cuarta: Interfaz uniforme generica que permita la administración 
+    entre el cliente y el servidor.
+
+    EndPoint- Rutas para acceder a un recurso
+
+    Sistema de capas para poder tener un monitoreo y
+    seguridad.
+
+    /*****CRUD*****/
+    --Operaciones basicas a una base de datos
+
+
+
