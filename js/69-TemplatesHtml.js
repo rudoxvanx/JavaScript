@@ -12,7 +12,7 @@ $template = document.getElementById("template-card").content,
 //Creo un fragmento para guardar los valores que serán cargados 
 $fragment = document.createDocumentFragment(),
 
-cardContent =[
+cardContent = [
     {
         title:"Tecnologia",
         img:"https://placeimg.com/200/200/nature"
@@ -45,6 +45,9 @@ cardContent.forEach(el => {
     $template.querySelector("img").setAttribute("alt",el.title);
     $template.querySelector("figcaption").textContent = el.title;
 
+    //Se clona para que pueda estar disponible para posteriores
+    //inserciones. Se le pasa el nodo html que clonara y bandera true 
+    //que clone estructuralmente todo el nodo 
     let $clone = document.importNode($template,true);
     $fragment.appendChild($clone);
 });

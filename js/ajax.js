@@ -188,14 +188,16 @@
 (() => {
     const $axiosAsync = document.getElementById('axios-asyc'),
     $fragment = document.createDocumentFragment();
-
+    
+    //Comando para correr mi servidor de api falsa
+    /*json-server --watch assets/db.json*/
     async function getData(){
         try{
   
             let res= await axios.get('https://jsonplaceholder.typicode.com/users'),
             json = await res.data;
             //console.log(res,json);
-            
+
             json.forEach(el => {
                 const $li = document.createElement("li");
                 $li.innerHTML = `${el.name} -- ${el.email} --${el.phone} `;
