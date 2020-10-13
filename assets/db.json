@@ -1,24 +1,24 @@
 {
   "personajes": [
     {
-      "id": 2,
-      "nombre": "Shiryu",
-      "constelacion": "Dragón"
-    },
-    {
-      "id": 3,
       "nombre": "Hyoga",
-      "constelacion": "Cisne"
+      "constelacion": "Cisne",
+      "id": 4
     },
     {
-      "id": 4,
       "nombre": "Shun",
-      "constelacion": "Andrómeda"
+      "constelacion": "Andromeda",
+      "id": 5
     },
     {
-      "id": 5,
       "nombre": "Ikki",
-      "constelacion": "Fénix"
+      "constelacion": "Fénix",
+      "id": 6
+    },
+    {
+      "nombre": "Saga",
+      "constelacion": "Geminis",
+      "id": 22
     }
   ],
   "dioses": [

@@ -34,10 +34,10 @@
         </article>
     </section>
     <template id="crud-template">
-        <tr>
+        <tr data-id="">
             <td class="name"></td>
             <td class="constelation"></td>
-            <td>
+            <td data-id="">
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
             </td>
@@ -50,6 +50,152 @@
         $title = d.querySelector('.crud-title'),
         $template = d.getElementById("crud-template").content,
         $fragment=d.createDocumentFragment();
+
+        function readPersonajes(){
+            const xhr = new XMLHttpRequest(),
+            $xhr = d.querySelector('.crud-table');
+
+            xhr.addEventListener('readystatechange',(e) => {
+
+                if(xhr.readyState !== 4) return;
+
+                if(xhr.status >= 200 && xhr.status < 300){
+                    let json = JSON.parse(xhr.responseText);
+                    console.log(json);
+                    
+                    json.forEach(el => {
+                        $template.querySelector('.name').textContent = el.nombre;
+                        $template.querySelector('.constelation').textContent = el.constelacion;
+                        $template.querySelector('tr').setAttribute("data-id",el.id);
+                        $template.querySelector('td[data-id]').setAttribute("data-id",el.id);
+
+                        let $clone = d.importNode($template,true);
+                        $fragment.appendChild($clone);
+                    });
+                    const $bodyTable = $table.querySelector('tbody'); 
+                    $bodyTable.appendChild($fragment);
+                }else{
+                    console.log('Error');
+                    let message = xhr.statusText || 'Ocurrio un error';
+
+                }
+                console.log('Este mensaje cargara de cualquier forma');
+            })
+
+            xhr.open('GET','http://localhost:3000/personajes');
+            xhr.send();
+        }
+
+        readPersonajes();
+        
+        function createPersonaje(){
+
+            const xhr = new XMLHttpRequest();
+
+            d.addEventListener('submit',(e) => {
+               e.preventDefault(); 
+               const data = d.querySelectorAll('input[required]');
+               const params = {
+                nombre: data[0].value,
+                constelacion: data[1].value
+              }
+               xhr.open('POST','http://localhost:3000/personajes');
+               xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+               xhr.send(JSON.stringify(params));
+            });
+
+        }
+        createPersonaje();
+
+        function eliminarPersonaje(){
+
+            const xhr = new XMLHttpRequest();
+
+            d.addEventListener('click',(e) => {
+                let id = e.target.parentNode.getAttribute('data-id');
+                
+                if(e.target.matches('.delete')){
+                   
+                    xhr.addEventListener('readystatechange', (e) => {
+                        e.preventDefault();
+                        if(xhr.readyState !== 4) return;
+
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            const data = d.querySelectorAll('input[required]');
+                            const params = {
+                                nombre: data[0].value,
+                                constelacion: data[1].value
+                            }
+
+                        }else console.log('Hubo un error');
+                   });
+
+                    xhr.open('DELETE','http://localhost:3000/personajes/'+id);
+                    xhr.send();
+                }
+            });
+        }
+        
+        eliminarPersonaje();
+
+        function cargarPersonaje(){
+            const xhr = new XMLHttpRequest();
+
+            d.addEventListener('click',(e) => {
+                  
+                if(e.target.matches('.edit')){
+                    let id = e.target.parentNode.getAttribute('data-id');
+                    
+                     xhr.addEventListener('readystatechange', (e) => {
+                        e.preventDefault();
+                        
+                        if(xhr.readyState !== 4) return;
+
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            let personaje = JSON.parse(xhr.responseText);
+                            
+                            $form.querySelector('input[name]').value = personaje[0];
+                            $form.querySelector('input[name]').value = personaje[1];
+
+                        }else console.log('Hubo un error');
+                   });
+                         xhr.open('GET','http://localhost:3000/personajes/'+id);
+                         xhr.send();
+                    /*let id = e.target.parentNode.getAttribute('data-id');
+                    const $personaje = e.target.parentNode.parentNode;
+
+                    let nombre = $personaje.querySelector('.name').textContent,
+                    constelacion = $personaje.querySelector('.constelation').textContent; 
+
+                    
+                    const $entradas = $form.querySelectorAll('input[required]');
+                    $entradas[0].value = nombre;
+                    $entradas[1].value = constelacion;*/
+
+                    /*xhr.addEventListener('readystatechange', (e) => {
+                        e.preventDefault();
+                        
+                        if(xhr.readyState !== 4) return;
+
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            let personaje = JSON.parse(xhr.responseText);
+                            let info  = $form.querySelectorAll('input[name]');
+                            
+                            info[0].value = personaje[0];
+                            info[1].value= personaje[1]; 
+
+                        }else console.log('Hubo un error');
+                   });
+
+                    xhr.open('GET','http://localhost:3000/personajes/'+id);
+                    xhr.send();*/
+                }
+            });
+
+        }
+
+
+        cargarPersonaje();
     </script>
 </body>
 </html>

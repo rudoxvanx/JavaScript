@@ -9,7 +9,7 @@ export default function webcam(id){
             video:true,
             audio:false
         })
-        .then(stream =>{
+        .then(stream => {
             console.log(stream);
             $video.srcObject = stream;
             $video.play();
