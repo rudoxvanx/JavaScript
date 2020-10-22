@@ -6,7 +6,7 @@
     <title>CRUD API REST FETCH</title>
 </head>
 <body>
-    <h1>CRUD API REST AJAX</h1>
+    <h1>CRUD API REST AJAX-FETCH</h1>
     <section class="crud">
         <article class="crud">
             <h2 class="crud-title">
@@ -16,7 +16,7 @@
                 <input type="text" name="nombre" placeholder="nombre" required><br>
                 <input type="text" name="constelacion" placeholder="constelacion" required><br>
                 <input type="submit" value="Enviar"> 
-                <input type="hidden" name="action">
+                <input type="hidden" name="id">
             </form>
         </article>
         <article>
@@ -34,7 +34,7 @@
         </article>
     </section>
     <template id="crud-template">
-        <tr>
+        <tr data-id="">
             <td class="name"></td>
             <td class="constelation"></td>
             <td>
@@ -50,6 +50,120 @@
         $title = d.querySelector('.crud-title'),
         $template = d.getElementById("crud-template").content,
         $fragment=d.createDocumentFragment();
+
+        const method_fetch = async (options) => {
+            let {url,method,success,error,data} = options;
+
+            (!data)?resp = await fetch(url,{
+                                method:method,
+                                headers:{'Content-Type':'application/json;charset=UTF-8'},
+                            })
+                    :resp = await fetch(url,{
+                                method:method,
+                                headers:{'Content-Type':'application/json;charset=UTF-8'},
+                                body:JSON.stringify(data)
+                            });
+            const json = await resp.json();
+
+            try{
+                if(!resp.ok){
+                    //console.log(resp);
+                    throw{
+                        status:resp.status,
+                        statusText:resp.statusText
+                    }
+                }else{
+                    success(json);      
+                }
+            }catch(err){
+                console.log(err);
+                error(err);
+            }
+        }
+
+        const getAll = () => {
+
+            method_fetch({
+                url:'http://localhost:3000/personajes',
+                method:'GET',
+
+                success:(data) => {
+                    data.forEach(el => {
+                        $template.querySelector('tr[data-id]').dataset.id = el.id;
+                        //$template.querySelector('td[data-id]').dataset.id = el.id;
+                        
+                        $template.querySelector('.delete').dataset.id = el.id;
+                        $template.querySelector('.edit').dataset.id = el.id;
+                        $template.querySelector('.edit').dataset.name = el.nombre;
+                        $template.querySelector('.edit').dataset.constelation = el.constelacion;
+
+                        $template.querySelector('.name').textContent = el.nombre;
+                        $template.querySelector('.constelation').textContent = el.constelacion;
+                        
+                        let $clone = d.importNode($template,true);
+                        $fragment.appendChild($clone);
+                    });
+                    const $bodyTable = $table.querySelector('tbody');
+                    $bodyTable.appendChild($fragment);
+                },
+                error:(err) => {
+                    console.log(err);
+                    $table.insertAdjacentHTML("afterend",`<p><b>${err.statusText} ${err.status}</b></p>`)
+                    },
+                data:null
+            })
+        }
+
+        const editCharacter = () => {
+            
+        }
+        d.addEventListener('DOMContentLoaded',getAll);
+        d.addEventListener('submit',(e) => {
+            if(e.target === $form){
+              
+                if(!e.target.id.value){
+                    e.preventDefault();
+                    method_fetch({
+                        url:`http://localhost:3000/personajes`,
+                        method:'POST',
+                        success:(res) => {location.reload},
+                        error:(err) => {$form.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`)},
+                        data:{
+                            nombre:e.target.nombre.value,
+                            constelacion:e.target.constelacion.value
+                        }
+                    });
+                }else{
+                    method_fetch({
+                        url:`http://localhost:3000/personajes/${e.target.id.value}`,
+                        method:'PUT',
+                        success:(res) => {location.reload},
+                        error:(err) => {$form.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`)},
+                        data:{
+                            nombre:e.target.nombre.value,
+                            constelacion:e.target.constelacion.value
+                        }
+                    });
+                }
+            }
+        })
+        d.addEventListener('click',(e) => {
+            if(e.target.matches('.edit')){
+                $title.textContent = 'Editar personaje';
+                $form.nombre.value = e.target.dataset.name;
+                $form.constelacion.value = e.target.dataset.constelation;
+                $form.id.value = e.target.dataset.id;
+            }
+            if(e.target.matches('.delete')){
+                let isDelete = confirm(`¿Estas seguro de eliminar el id ${e.target.dataset.id}?`);
+                if(isDelete){
+                    method_fetch({
+                        url:`http://localhost:3000/personajes/${e.target.dataset.id}`,
+                        method:'DELETE',
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>

@@ -62,8 +62,8 @@
                 if(xhr.status >= 200 && xhr.status < 300 ){
                      console.log(xhr.status);
                      let json = JSON.parse(xhr.responseText);
-                     
                      success(json); 
+                     
                 }else{
                     let message = xhr.statusText || "Ocurrio un error";
                     error(`Error ${xhr.status}:${message}`);
@@ -83,6 +83,7 @@
                 url:"http://localhost:3000/personajes",
                 success: (res) => { 
                     console.log(res); 
+
                     res.forEach(el => {
                         $template.querySelector(".name").textContent = el.nombre;
                         $template.querySelector(".constelation").textContent = el.constelacion;
@@ -141,7 +142,7 @@
              }
         });
 
-        d.addEventListener("click", e =>{
+        d.addEventListener("click", e => {
             if(e.target.matches(".edit")){
                 $title.textContent ="Editar Santo";
                 $form.nombre.value = e.target.dataset.name;
